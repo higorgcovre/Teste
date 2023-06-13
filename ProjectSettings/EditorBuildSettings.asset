@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 1afb6ade61e49ae40b781ef122b915c5
+  - enabled: 1
+    path: Assets/Scenes/Bancada.unity
+    guid: c9893a630b8360f4a952afe1d286c2c7
+  - enabled: 1
+    path: Assets/Scenes/LoadScena.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c2524456a2603234e946ff3028ddb8ce, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 2d20d74bcbca7884696f029a939067ac, type: 2}

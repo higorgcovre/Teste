@@ -5,6 +5,7 @@ using Firebase;
 using Firebase.Auth;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AuthManager : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class AuthManager : MonoBehaviour
     public TMP_InputField passwordRegisterVerifyField;
     public TMP_Text warningRegisterText;
 
+    [Header("Tela")]
+    public GameObject loginTela;
+    public GameObject registroTela, senhaTela, emailTela;
+    private GameObject atualTela;
+
     private void Awake()
     {
         //Verifica se todas as depedencias do firebase estão incluidas no sistema
@@ -46,6 +52,8 @@ public class AuthManager : MonoBehaviour
                 Debug.LogError("Não foi possivel resolver todas as dependencias do firebase " + dependencyStatus);
             }
         });
+
+        atualTela = loginTela;
     }
 
     private void InitializeFirebase()
@@ -65,6 +73,30 @@ public class AuthManager : MonoBehaviour
     {
         //chama a corrotina registro passand o email, senha e nome de usuário
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, userNameRegisterField.text + " " + userSurnameRegisterField.text));
+    }
+
+    public void TelaLogin()
+    {
+        MudarTela(loginTela);
+    }
+
+    public void TelaRegistro()
+    {
+        MudarTela(registroTela);
+    }
+
+    public void TelaSenha()
+    {
+        MudarTela(senhaTela);
+    }
+
+    void MudarTela(GameObject tela)
+    {
+        tela.SetActive(true);
+        print(atualTela);
+        if (atualTela != null)
+            atualTela.SetActive(false);
+        atualTela = tela;
     }
 
     private IEnumerator Login(string email, string password)
@@ -105,6 +137,7 @@ public class AuthManager : MonoBehaviour
             Debug.LogFormat("Usuário logado com sucesso: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logado!";
+            LoadSceneManager.instance.Load(1);
         }
     }
     private IEnumerator Register(string _email, string password, string username)
