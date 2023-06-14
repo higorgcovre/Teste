@@ -31,6 +31,11 @@ public class AuthManager : MonoBehaviour
     public TMP_InputField passwordRegisterVerifyField;
     public TMP_Text warningRegisterText;
 
+    [Header("Change")]
+    public TMP_InputField emailChangePassword;
+    public TMP_InputField newPassword;
+    public TMP_Text warningChangePassText;
+
     [Header("Tela")]
     public GameObject loginTela;
     public GameObject registroTela, senhaTela, emailTela;
@@ -42,7 +47,7 @@ public class AuthManager : MonoBehaviour
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
             dependencyStatus = task.Result;
-            if(dependencyStatus == DependencyStatus.Available)
+            if (dependencyStatus == DependencyStatus.Available)
             {
                 //Se elas estão incluidas inicializa o firebase
                 InitializeFirebase();
@@ -99,16 +104,21 @@ public class AuthManager : MonoBehaviour
         atualTela = tela;
     }
 
+    public void ChangePassButton()
+    {
+        StartCoroutine(ChangePassword(emailChangePassword.text));
+    }
+
     private IEnumerator Login(string email, string password)
     {
         var LoginTask = auth.SignInWithEmailAndPasswordAsync(email, password);
-        yield return new WaitUntil(() =>  LoginTask.IsCompleted);
+        yield return new WaitUntil(() => LoginTask.IsCompleted);
 
-        if(LoginTask.Exception != null)
+        if (LoginTask.Exception != null)
         {
             Debug.LogWarning(message: $"Falha na tarefa de registro com {LoginTask.Exception}");
             FirebaseException firebaseException = LoginTask.Exception.GetBaseException() as FirebaseException;
-            AuthError errorCode = (AuthError) firebaseException.ErrorCode;
+            AuthError errorCode = (AuthError)firebaseException.ErrorCode;
 
             string message = "Login Falhou!";
             switch (errorCode)
@@ -143,9 +153,11 @@ public class AuthManager : MonoBehaviour
     private IEnumerator Register(string _email, string password, string username)
     {
         Debug.Log(_email);
-        if(username == "") {
+        if (username == "")
+        {
             warningRegisterText.text = "Usuario está vazio";
-        }else if(passwordRegisterField.text != passwordRegisterVerifyField.text)
+        }
+        else if (passwordRegisterField.text != passwordRegisterVerifyField.text)
         {
             warningRegisterText.text = "Senha não combina!";
         }
@@ -154,11 +166,11 @@ public class AuthManager : MonoBehaviour
             var RegisterTask = auth.CreateUserWithEmailAndPasswordAsync(_email, password);
             yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
 
-            if(RegisterTask.Exception != null)
+            if (RegisterTask.Exception != null)
             {
                 Debug.LogWarning(message: $"Falha no registro com {RegisterTask.Exception}");
                 FirebaseException firebaseException = RegisterTask.Exception.GetBaseException() as FirebaseException;
-                AuthError errorCode = (AuthError) firebaseException.ErrorCode;
+                AuthError errorCode = (AuthError)firebaseException.ErrorCode;
 
                 string message = "Registro Falhou";
 
@@ -182,16 +194,16 @@ public class AuthManager : MonoBehaviour
             else
             {
                 User = RegisterTask.Result.User;
-                if(User != null)
+                if (User != null)
                 {
                     UserProfile profile = new UserProfile { DisplayName = username };
                     var ProfileTask = User.UpdateUserProfileAsync(profile);
                     yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
-                    if(ProfileTask.Exception != null)
+                    if (ProfileTask.Exception != null)
                     {
                         Debug.LogWarning(message: $"Falha na tarefa de registro com {ProfileTask.Exception}");
                         FirebaseException firebaseException = ProfileTask.Exception.GetBaseException() as FirebaseException;
-                        AuthError errorCode = (AuthError) (firebaseException.ErrorCode);
+                        AuthError errorCode = (AuthError)(firebaseException.ErrorCode);
                         warningRegisterText.text = "Nove de usuario falhou";
                     }
                     else
@@ -199,8 +211,53 @@ public class AuthManager : MonoBehaviour
                         //UIManager.instance.LoginScreen();
                         warningRegisterText.text = "";
                     }
+                    var sendEmailTask = User.SendEmailVerificationAsync().ContinueWith(task =>
+                    {
+                        if (task.IsCanceled)
+                        {
+                            print("A tarefa de envio de email foi cancelada");
+                            return;
+                        }
+                        if (task.IsFaulted)
+                        {
+                            print("Ocorreu um erro no envio do email de verificação: " + task.Exception.ToString());
+                            return;
+                        }
+                        print("Email foi enviado com sucesso!");
+                    });
                 }
             }
+        }
+    }
+
+    private IEnumerator ChangePassword(string email)
+    {
+        if (emailChangePassword.text == "")
+        {
+            warningChangePassText.text = "Campo de email não pode estar vazio";
+        }
+
+        else
+        {
+            var task = auth.SendPasswordResetEmailAsync(email).ContinueWith(task =>
+            {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("SendPasswordResetEmailAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("SendPasswordResetEmailAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("Password reset email sent successfully.");
+            });
+
+            yield return new WaitUntil(predicate: () => task.IsCompleted);
+
+            TelaLogin();
         }
     }
 }
