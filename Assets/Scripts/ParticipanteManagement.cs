@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class ParticipanteManagement : MonoBehaviour
 {
-    public int nVotosSim, nVotosNao;
-    public TextMeshProUGUI nVotosSimT, nVotosNaoT;
-    public bool permitidoVotar = true;
-    public string descricao;
-    public TextMeshProUGUI textoDescricao;
+    private int nVotosSim, nVotosNao;
+    [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
+    [SerializeField] private bool permitidoVotar = true;
+    [SerializeField] private string descricao;
+    [SerializeField] private TextMeshProUGUI textoDescricao;
     public void votarSim()
     {
+        print("Votei Sim!");
         if (permitidoVotar)
         {
             nVotosSim++;
@@ -22,6 +23,7 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void votarNao()
     {
+        print("Votei Não!");
         if (permitidoVotar)
         {
             nVotosNao++;

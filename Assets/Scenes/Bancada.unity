@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 9898419}
   - component: {fileID: 9898418}
   - component: {fileID: 9898417}
+  - component: {fileID: 9898421}
   m_Layer: 5
   m_Name: Canvas_Participant
   m_TagString: Untagged
@@ -499,6 +500,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0.092, y: 0.032}
   m_SizeDelta: {x: 1920, y: 1079.61}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9898421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9898416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d9211f5ec1cbc44a9524f7a9064c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nVotosSimT: {fileID: 478745348}
+  nVotosNaoT: {fileID: 1207995756}
+  permitidoVotar: 1
+  descricao: 
+  textoDescricao: {fileID: 2086756744}
 --- !u!1 &21696059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1586,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 100379868}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9898421}
+        m_TargetAssemblyTypeName: ParticipanteManagement, Assembly-CSharp
+        m_MethodName: votarNao
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &100379868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7724,7 +7754,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435085492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 70}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8006,7 +8036,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473316163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8263,7 +8293,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476347802}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &476347806
 Camera:
   m_ObjectHideFlags: 0
@@ -17305,7 +17335,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1101726015}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9898421}
+        m_TargetAssemblyTypeName: ParticipanteManagement, Assembly-CSharp
+        m_MethodName: votarSim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1101726015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26243,7 +26285,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746295534}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1746295538
 Camera:
   m_ObjectHideFlags: 0
@@ -27887,7 +27929,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848840879}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29794,7 +29836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0, y: -20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997036726
@@ -29812,10 +29854,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 66
+    m_Top: 111
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 10.47
+  m_Spacing: 38.09
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
