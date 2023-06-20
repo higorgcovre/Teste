@@ -1,6 +1,10 @@
+using Firebase.Storage;
+using Firebase;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class ParticipanteManagement : MonoBehaviour
@@ -12,6 +16,38 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo;
     public VideoPlayer videoPlayer;
     private string path;
+    private string caminhoNoBucket = "gs://teste-6010d.appspot.com/Videos";
+    
+    void Start()
+    {
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            if (task.IsCompleted)
+            {
+                FirebaseStorage storage = FirebaseStorage.DefaultInstance;
+            }
+            else
+            {
+                Debug.LogError("Falha ao inicializar o Firebase");
+            }
+        });
+    }
+    void UploadVideo(string caminhoLocalDoVideo)
+    {
+        FirebaseStorage storage = FirebaseStorage.DefaultInstance;
+        StorageReference videoRef = storage.GetReferenceFromUrl(caminhoNoBucket);
+
+        videoRef.PutFileAsync(caminhoLocalDoVideo)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled)
+                {
+                    Debug.LogError("Falha ao carregar o vídeo: " + task.Exception);
+                }
+                else
+                {
+                    Debug.Log("Vídeo carregado com sucesso!");
+                }
+            });
+    }
     public void votarSim()
     {
         if (permitidoVotar)
@@ -39,10 +75,10 @@ public class ParticipanteManagement : MonoBehaviour
     public void EscolherVideo()
     {
         path = EditorUtility.OpenFilePanel("Mostrando todos os vídeos", "", "mp4");
+        
         if (path != null)
         {
-            videoPlayer.url = path;
-            videoPlayer.Play();
+            UploadVideo(path);
         }
     }
     public void votacaoEnter()
