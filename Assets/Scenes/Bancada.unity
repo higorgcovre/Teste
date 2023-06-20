@@ -515,11 +515,10 @@ MonoBehaviour:
   nVotosSimT: {fileID: 211665367}
   nVotosNaoT: {fileID: 1410686550}
   permitidoVotar: 1
-  descricao: 
-  nomeVideo: 
   textoDescricao: {fileID: 1810961884}
   textoNomeVideo: {fileID: 1146402652}
   videoPlayer: {fileID: 1566946893}
+  rawImage: {fileID: 0}
 --- !u!1 &11480131
 GameObject:
   m_ObjectHideFlags: 0
