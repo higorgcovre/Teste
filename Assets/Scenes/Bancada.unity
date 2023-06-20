@@ -15317,14 +15317,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065455200}
-  m_LocalRotation: {x: -0.6493707, y: -0.64937085, z: 0.27985284, w: 0.2798531}
+  m_LocalRotation: {x: -0.26128992, y: -0.65705985, z: 0.65705985, w: -0.26128992}
   m_LocalPosition: {x: -18.19, y: -7.37, z: 57.93}
-  m_LocalScale: {x: 0.7072502, y: 1, z: 1.4640331}
+  m_LocalScale: {x: 1.4560866, y: 1, z: 0.71528876}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: -133.372, z: 90}
+  m_LocalEulerAnglesHint: {x: 90, y: -133.372, z: 90}
 --- !u!328 &1065455205
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -15343,14 +15343,14 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: file://C:/Users/fabio/Downloads/2023-06-17_18-41-17.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
