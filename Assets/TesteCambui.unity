@@ -179,7 +179,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -411,6 +411,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Man 1 T-Pose
       objectReference: {fileID: 0}
+    - target: {fileID: 3492591610685698801, guid: 9ea7950689edb9047bcad6510aaec235, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ea7950689edb9047bcad6510aaec235, type: 3}
 --- !u!1001 &4418970516618884773
@@ -423,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 6152409825425125733, guid: 610790665b44ac144bc39d63acc985b0, type: 3}
       propertyPath: m_Name
       value: Man 2 T-Pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 6152409825425125733, guid: 610790665b44ac144bc39d63acc985b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6785253995887078367, guid: 610790665b44ac144bc39d63acc985b0, type: 3}
       propertyPath: m_RootOrder
