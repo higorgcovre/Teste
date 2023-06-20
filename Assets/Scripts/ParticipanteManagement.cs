@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class ParticipanteManagement : MonoBehaviour
 {
     private int nVotosSim, nVotosNao;
     [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
     [SerializeField] private bool permitidoVotar = true;
-    [SerializeField] private string descricao;
-    [SerializeField] private TextMeshProUGUI textoDescricao;
+    [SerializeField] private string descricao, nomeVideo;
+    [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo;
+    public VideoPlayer videoPlayer;
+    private string path;
     public void votarSim()
     {
-        print("Votei Sim!");
         if (permitidoVotar)
         {
             nVotosSim++;
@@ -23,7 +24,6 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void votarNao()
     {
-        print("Votei Não!");
         if (permitidoVotar)
         {
             nVotosNao++;
@@ -33,6 +33,16 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void enviarProposta()
     {
-       
+        descricao = textoDescricao.text;
+        nomeVideo = textoNomeVideo.text;
+    }
+    public void EscolherVideo()
+    {
+        path = EditorUtility.OpenFilePanel("Mostrando todos os vídeos", "", "mp4");
+        if (path != null)
+        {
+            videoPlayer.url = path;
+            videoPlayer.Play();
+        }
     }
 }
