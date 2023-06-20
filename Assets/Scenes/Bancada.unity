@@ -518,7 +518,7 @@ MonoBehaviour:
   descricao: 
   nomeVideo: 
   textoDescricao: {fileID: 1810961884}
-  textoNomeVideo: {fileID: 0}
+  textoNomeVideo: {fileID: 1146402652}
   videoPlayer: {fileID: 1566946893}
 --- !u!1 &11480131
 GameObject:
@@ -7311,7 +7311,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 514295006}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9898421}
+        m_TargetAssemblyTypeName: ParticipanteManagement, Assembly-CSharp
+        m_MethodName: UploadVideoEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &514295006
 MonoBehaviour:
   m_ObjectHideFlags: 0
