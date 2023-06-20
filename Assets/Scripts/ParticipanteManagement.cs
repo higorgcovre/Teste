@@ -1,6 +1,5 @@
 using Firebase.Storage;
 using Firebase;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -13,9 +12,10 @@ public class ParticipanteManagement : MonoBehaviour
     private int nVotosSim, nVotosNao;
     [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
     [SerializeField] private bool permitidoVotar = true;
-    [SerializeField] private string descricao, nomeVideo;
+    //[SerializeField] private string descricao, nomeVideo;
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo;
     public VideoPlayer videoPlayer;
+    public RawImage rawImage;
     private string path;
     private string caminhoNoBucket = "gs://teste-6010d.appspot.com/";
 
@@ -66,7 +66,16 @@ public class ParticipanteManagement : MonoBehaviour
             else
             {
                 byte[] videoBytes = task.Result;
-                // Use o vídeoBytes como quiser (ex: crie uma textura de vídeo ou salve o arquivo localmente)
+
+                Texture2D videoTexture = new Texture2D(2, 2);
+                videoTexture.LoadImage(videoBytes);
+
+                RenderTexture renderTexture = new RenderTexture(videoTexture.width, videoTexture.height, 0);
+                renderTexture.Create();
+                
+                videoPlayer.targetTexture = renderTexture;
+                videoPlayer.Play();
+          
                 Debug.Log("Vídeo carregado com sucesso!");
             }
         });
@@ -89,11 +98,6 @@ public class ParticipanteManagement : MonoBehaviour
             nVotosNaoT.text = nVotosNao.ToString();
         }
         permitidoVotar = !permitidoVotar;
-    }
-    public void enviarProposta()
-    {
-        descricao = textoDescricao.text;
-        nomeVideo = textoNomeVideo.text;
     }
     public void EscolherVideo()
     {
