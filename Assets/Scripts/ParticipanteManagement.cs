@@ -6,10 +6,10 @@ using UnityEngine;
 public class ParticipanteManagement : MonoBehaviour
 {
     public int nVotosSim, nVotosNao;
-    public TextMeshProUGUI nVotosSimT, nVotosNaoT, textoDescricao;
+    public TextMeshProUGUI nVotosSimT, nVotosNaoT;
     public bool permitidoVotar = true;
     public string descricao;
-
+    public TextMeshProUGUI textoDescricao;
     public void votarSim()
     {
         if (permitidoVotar)
