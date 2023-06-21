@@ -17,7 +17,6 @@ public class ParticipanteManagement : MonoBehaviour
     private string caminhoNoBucket = "gs://teste-6010d.appspot.com/";
     private StorageReference videoRef;
 
-
     void Start()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -67,9 +66,7 @@ public class ParticipanteManagement : MonoBehaviour
         {
             Debug.LogError("Erro ao obter a URL do vídeo: " + videoDownTask.Exception);
         }
-        
     }
-
     public void votarSim()
     {
         if (permitidoVotar)
