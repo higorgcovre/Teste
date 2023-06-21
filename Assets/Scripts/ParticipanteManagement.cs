@@ -6,18 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using System.Collections;
+using Firebase.Extensions;
 
 public class ParticipanteManagement : MonoBehaviour
 {
     private int nVotosSim, nVotosNao;
     [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
     [SerializeField] private bool permitidoVotar = true;
-    //[SerializeField] private string descricao, nomeVideo;
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
     public VideoPlayer videoPlayer;
     public RawImage rawImage;
     private string path;
     private string caminhoNoBucket = "gs://teste-6010d.appspot.com/";
+    private StorageReference videoRef;
 
 
     void Start()
@@ -37,8 +38,7 @@ public class ParticipanteManagement : MonoBehaviour
     private IEnumerator UploadVideo(string caminhoLocalDoVideo)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
-        StorageReference videoRef = storage.GetReferenceFromUrl(caminhoNoBucket+textoNomeVideo.text);
-        print("Linha 0");
+        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + textoNomeVideo.text);
         var videoUpTask = videoRef.PutFileAsync(caminhoLocalDoVideo);
         yield return new WaitUntil(predicate: () => videoUpTask.IsCompleted);
 
@@ -50,38 +50,30 @@ public class ParticipanteManagement : MonoBehaviour
         print("Carregou!!");
 
     }
-    void LoadVideoFromFirebaseStorage(string caminhoNoBucket)
+    private IEnumerator LoadVideoFromFirebaseStorage(string caminhoNoBucket)
     {
-        //FirebaseStorage storage = FirebaseStorage.DefaultInstance;
+        FirebaseStorage storage = FirebaseStorage.DefaultInstance;
+        print(caminhoNoBucket+textoNomeVideo.text);
+        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + textoNameVideo.text);
 
-        //StorageReference videoRef = storage.GetReferenceFromUrl(caminhoNoBucket);
+        var videoDownTask = videoRef.GetDownloadUrlAsync();
 
-        print("Estou aqui no carregamento do vídeo!");
-        videoPlayer.url = caminhoNoBucket;
-        // Baixe o arquivo de vídeo
-        /*videoRef.GetBytesAsync(long.MaxValue).ContinueWith(task =>
+        yield return new WaitUntil(predicate: ()=> videoDownTask.IsCompleted);
+        
+        if (!videoDownTask.IsFaulted && !videoDownTask.IsCanceled)
         {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogError("Falha ao carregar o vídeo: " + task.Exception);
-            }
-            else
-            {
-                byte[] videoBytes = task.Result;
-
-                Texture2D videoTexture = new Texture2D(2, 2);
-                videoTexture.LoadImage(videoBytes);
-
-                RenderTexture renderTexture = new RenderTexture(videoTexture.width, videoTexture.height, 0);
-                renderTexture.Create();
-                
-                videoPlayer.targetTexture = renderTexture;
-                videoPlayer.Play();
-          
-                Debug.Log("Vídeo carregado com sucesso!");
-            }
-        });*/
+            print(videoDownTask.Result.ToString());
+            string videoUrl = videoDownTask.Result.ToString();
+            videoPlayer.url = videoUrl;
+            videoPlayer.Play();
+        }
+        else
+        {
+            Debug.LogError("Erro ao obter a URL do vídeo: " + videoDownTask.Exception);
+        }
+        
     }
+
     public void votarSim()
     {
         if (permitidoVotar)
@@ -104,23 +96,12 @@ public class ParticipanteManagement : MonoBehaviour
     public void EscolherVideo()
     {
         path = EditorUtility.OpenFilePanel("Mostrando todos os vídeos", "", "mp4");
-
         if (path != null)
         {
             print("O caminho foi salvo");
         }
     }
-    public void UploadVideo()
-    {
-        if (path != null && textoNomeVideo.text != "")
-        {
-            print("Caminho para o vídeo definido com sucesso!");
-        }
-        else
-        {
-            print("Nenhum vídeo encontrado, por favor selecione um video de seu computador!");
-        }
-    }
+   
     public void UploadVideoEnter()
     {
         if(path != null && textoNomeVideo.text != "")
@@ -137,8 +118,7 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void LoadVideoEnter()
     {
-            print("Video com Name");
-            LoadVideoFromFirebaseStorage(caminhoNoBucket + textoNameVideo.text);
+        print("Video com Name");
+        StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
     }
 }
-  
