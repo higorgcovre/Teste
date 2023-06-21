@@ -1,45 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
 using Firebase.Auth;
 using TMPro;
-using System;
-using UnityEngine.SceneManagement;
+
 
 public class AuthManager : MonoBehaviour
 {
     //Firebase Variables
     [Header("Firebase")]
     public DependencyStatus dependencyStatus;
-    public FirebaseAuth auth;
-    public FirebaseUser User;
+    [SerializeField] private FirebaseAuth auth;
+    [SerializeField] private FirebaseUser User;
 
     //Login variables
     [Header("Login")]
-    public TMP_InputField emailLoginField;
-    public TMP_InputField passwordLoginField;
-    public TMP_Text warningLoginText;
-    public TMP_Text confirmLoginText;
+    [SerializeField] private TMP_InputField emailLoginField, passwordLoginField;
+    [SerializeField] private TMP_Text warningLoginText, confirmLoginText;
 
     //Register variables
     [Header("Register")]
-    public TMP_InputField userNameRegisterField;
-    public TMP_InputField userSurnameRegisterField;
-    public TMP_InputField emailRegisterField;
-    public TMP_InputField passwordRegisterField;
-    public TMP_InputField passwordRegisterVerifyField;
-    public TMP_Text warningRegisterText;
+    [SerializeField] private TMP_InputField userNameRegisterField, userSurnameRegisterField, emailRegisterField, passwordRegisterField, passwordRegisterVerifyField;
+    [SerializeField] private TMP_Text warningRegisterText;
 
     [Header("Change")]
-    public TMP_InputField emailChangePassword;
-    public TMP_InputField newPassword;
-    public TMP_Text warningChangePassText;
+    [SerializeField] private TMP_InputField emailChangePassword, newPassword;
+    [SerializeField] private TMP_Text warningChangePassText;
 
     [Header("Tela")]
-    public GameObject loginTela;
-    public GameObject registroTela, senhaTela, emailTela;
-    private GameObject atualTela;
+    [SerializeField] private GameObject registroTela, senhaTela, emailTela, atualTela, loginTela;
+
 
     private void Awake()
     {
