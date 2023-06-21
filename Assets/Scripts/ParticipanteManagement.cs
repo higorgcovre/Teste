@@ -81,9 +81,9 @@ public class ParticipanteManagement : MonoBehaviour
     private IEnumerator LoadVideoFromFirebaseStorage(string caminhoNoBucket)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
-        print(caminhoNoBucket+textoNomeVideo.text);
+        print(caminhoNoBucket+textoNameVideo.text);
         videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + textoNameVideo.text);
-
+        print(videoRef.ToString());
         var videoDownTask = videoRef.GetDownloadUrlAsync();
 
         yield return new WaitUntil(predicate: ()=> videoDownTask.IsCompleted);
