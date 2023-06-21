@@ -3,10 +3,8 @@ using Firebase;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Video;
 using System.Collections;
-using Firebase.Extensions;
 
 public class ParticipanteManagement : MonoBehaviour
 {
@@ -15,7 +13,6 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private bool permitidoVotar = true;
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
     public VideoPlayer videoPlayer;
-    public RawImage rawImage;
     private string path;
     private string caminhoNoBucket = "gs://teste-6010d.appspot.com/";
     private StorageReference videoRef;
@@ -46,7 +43,7 @@ public class ParticipanteManagement : MonoBehaviour
         {
             print("Ocorreu algum erro: " + videoUpTask.Exception);
         }
-
+        print("Video enviado com sucesso!");
         print("Carregou!!");
 
     }
@@ -62,7 +59,6 @@ public class ParticipanteManagement : MonoBehaviour
         
         if (!videoDownTask.IsFaulted && !videoDownTask.IsCanceled)
         {
-            print(videoDownTask.Result.ToString());
             string videoUrl = videoDownTask.Result.ToString();
             videoPlayer.url = videoUrl;
             videoPlayer.Play();
@@ -101,14 +97,11 @@ public class ParticipanteManagement : MonoBehaviour
             print("O caminho foi salvo");
         }
     }
-   
     public void UploadVideoEnter()
     {
         if(path != null && textoNomeVideo.text != "")
         {
-            print("Video enviado com sucesso!");
             StartCoroutine(UploadVideo(path));
-           
         }
         else
         {
@@ -118,7 +111,14 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void LoadVideoEnter()
     {
-        print("Video com Name");
-        StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
+        if (textoNameVideo.text != "")
+        {
+            print("Video com Name");
+            StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
+        }
+        else
+        {
+            print("Porfavor preencha o nome do vídeo!");
+        }
     }
 }
