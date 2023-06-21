@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "425204632544",
+    "project_id": "teste-6010d",
+    "storage_bucket": "teste-6010d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425204632544:android:182dd5967d9f2fe7c0f985",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.CambuiOnline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425204632544-st9bkirk1seh0u5oo0snm1ou2vp1820f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKuiUqvmiBEmQB8lq38L60v3y5QD6QxiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425204632544-st9bkirk1seh0u5oo0snm1ou2vp1820f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
