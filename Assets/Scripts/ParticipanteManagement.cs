@@ -31,6 +31,26 @@ public class ParticipanteManagement : MonoBehaviour
             }
         });
     }
+    public void EscolherVideo()
+    {
+        path = EditorUtility.OpenFilePanel("Mostrando todos os vídeos", "", "mp4");
+        if (path != null)
+        {
+            print("O caminho foi salvo");
+        }
+    }
+    public void UploadVideoEnter()
+    {
+        if(path != null && textoNomeVideo.text != "")
+        {
+            StartCoroutine(UploadVideo(path));
+        }
+        else
+        {
+            print("Por favor selecione o vídeo e preencha o nome");
+        }
+       
+    }
     private IEnumerator UploadVideo(string caminhoLocalDoVideo)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
@@ -45,6 +65,18 @@ public class ParticipanteManagement : MonoBehaviour
         print("Video enviado com sucesso!");
         print("Carregou!!");
 
+    }
+    public void LoadVideoEnter()
+    {
+        if (textoNameVideo.text != "")
+        {
+            print("Video com Name");
+            StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
+        }
+        else
+        {
+            print("Porfavor preencha o nome do vídeo!");
+        }
     }
     private IEnumerator LoadVideoFromFirebaseStorage(string caminhoNoBucket)
     {
@@ -85,37 +117,5 @@ public class ParticipanteManagement : MonoBehaviour
             nVotosNaoT.text = nVotosNao.ToString();
         }
         permitidoVotar = !permitidoVotar;
-    }
-    public void EscolherVideo()
-    {
-        path = EditorUtility.OpenFilePanel("Mostrando todos os vídeos", "", "mp4");
-        if (path != null)
-        {
-            print("O caminho foi salvo");
-        }
-    }
-    public void UploadVideoEnter()
-    {
-        if(path != null && textoNomeVideo.text != "")
-        {
-            StartCoroutine(UploadVideo(path));
-        }
-        else
-        {
-            print("Por favor selecione o vídeo e preencha o nome");
-        }
-       
-    }
-    public void LoadVideoEnter()
-    {
-        if (textoNameVideo.text != "")
-        {
-            print("Video com Name");
-            StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
-        }
-        else
-        {
-            print("Porfavor preencha o nome do vídeo!");
-        }
-    }
+    }    
 }
