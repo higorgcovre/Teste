@@ -13,7 +13,7 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
     [SerializeField] private bool permitidoVotar = true;
     //[SerializeField] private string descricao, nomeVideo;
-    [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo;
+    [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
     public VideoPlayer videoPlayer;
     public RawImage rawImage;
     private string path;
@@ -52,12 +52,14 @@ public class ParticipanteManagement : MonoBehaviour
     }
     void LoadVideoFromFirebaseStorage(string caminhoNoBucket)
     {
-        FirebaseStorage storage = FirebaseStorage.DefaultInstance;
+        //FirebaseStorage storage = FirebaseStorage.DefaultInstance;
 
-        StorageReference videoRef = storage.GetReferenceFromUrl(caminhoNoBucket);
+        //StorageReference videoRef = storage.GetReferenceFromUrl(caminhoNoBucket);
 
+        print("Estou aqui no carregamento do vídeo!");
+        videoPlayer.url = caminhoNoBucket;
         // Baixe o arquivo de vídeo
-        videoRef.GetBytesAsync(long.MaxValue).ContinueWith(task =>
+        /*videoRef.GetBytesAsync(long.MaxValue).ContinueWith(task =>
         {
             if (task.IsFaulted || task.IsCanceled)
             {
@@ -78,7 +80,7 @@ public class ParticipanteManagement : MonoBehaviour
           
                 Debug.Log("Vídeo carregado com sucesso!");
             }
-        });
+        });*/
     }
     public void votarSim()
     {
@@ -135,7 +137,8 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void LoadVideoEnter()
     {
-        LoadVideoFromFirebaseStorage(caminhoNoBucket + textoNomeVideo.text);
+            print("Video com Name");
+            LoadVideoFromFirebaseStorage(caminhoNoBucket + textoNameVideo.text);
     }
 }
   
