@@ -14,7 +14,7 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
     public VideoPlayer videoPlayer;
     private string path;
-    private string caminhoNoBucket = "gs://teste-6010d.appspot.com/";
+    private string caminhoNoBucket = "gs://teste-cambui02.appspot.com";
     private StorageReference videoRef;
 
     void Start()
