@@ -14,7 +14,7 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
     public VideoPlayer videoPlayer;
     private string path;
-    private string caminhoNoBucket = "gs://teste-cambui02.appspot.com/";
+    private string caminhoNoBucket = "gs://teste-cambui02.appspot.com";
     private StorageReference videoRef;
 
     void Start()
@@ -66,19 +66,19 @@ public class ParticipanteManagement : MonoBehaviour
         print("Carregou!!");
 
     }
-    public void DownLoadVideoEnter()
+    public void LoadVideoEnter()
     {
         if (textoNameVideo.text != "")
         {
             print("Video com Name");
-            StartCoroutine(DownLoadVideoFromFirebaseStorage(caminhoNoBucket));
+            StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
         }
         else
         {
             print("Porfavor preencha o nome do vídeo!");
         }
     }
-    private IEnumerator DownLoadVideoFromFirebaseStorage(string caminhoNoBucket)
+    private IEnumerator LoadVideoFromFirebaseStorage(string caminhoNoBucket)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
         print(caminhoNoBucket+textoNameVideo.text);
