@@ -135,8 +135,9 @@ public class AuthManager : MonoBehaviour
         {
             User = LoginTask.Result.User;
             Debug.LogFormat("Usuário logado com sucesso: {0} ({1})", User.DisplayName, User.Email);
-            warningLoginText.text = "";
+            warningLoginText.text = "Entrando...";
             confirmLoginText.text = "Logado!";
+            NetworkManager.Instance.EnterLobby(User.DisplayName);
             LoadSceneManager.instance.Load(1);
         }
     }
