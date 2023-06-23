@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
+using System.Linq;
 
 public class ParticipanteManagement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
     public VideoPlayer videoPlayer;
     private string path;
-    private string caminhoNoBucket = "gs://teste-cambui02.appspot.com";
+    private string caminhoNoBucket = "gs://teste-cambui02.appspot.com/";
     private StorageReference videoRef;
 
     void Start()
@@ -54,7 +55,7 @@ public class ParticipanteManagement : MonoBehaviour
     private IEnumerator UploadVideo(string caminhoLocalDoVideo)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
-        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + textoNomeVideo.text);
+        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + name);
         var videoUpTask = videoRef.PutFileAsync(caminhoLocalDoVideo);
         yield return new WaitUntil(predicate: () => videoUpTask.IsCompleted);
 
@@ -66,24 +67,17 @@ public class ParticipanteManagement : MonoBehaviour
         print("Carregou!!");
 
     }
-    public void LoadVideoEnter()
+    public void DownLoadVideoEnter()
     {
-        if (textoNameVideo.text != "")
-        {
-            print("Video com Name");
-            StartCoroutine(LoadVideoFromFirebaseStorage(caminhoNoBucket));
-        }
-        else
-        {
-            print("Porfavor preencha o nome do vídeo!");
-        }
+        StartCoroutine(DownLoadVideoFromFirebaseStorage());
+       
     }
-    private IEnumerator LoadVideoFromFirebaseStorage(string caminhoNoBucket)
+    private IEnumerator DownLoadVideoFromFirebaseStorage()
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
-        print(caminhoNoBucket+textoNameVideo.text);
-        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + textoNameVideo.text);
-        print(videoRef.ToString());
+
+        string a = caminhoNoBucket + "Canvas_Participant";
+        videoRef = storage.GetReferenceFromUrl(a);
         var videoDownTask = videoRef.GetDownloadUrlAsync();
 
         yield return new WaitUntil(predicate: ()=> videoDownTask.IsCompleted);
@@ -93,6 +87,7 @@ public class ParticipanteManagement : MonoBehaviour
             string videoUrl = videoDownTask.Result.ToString();
             videoPlayer.url = videoUrl;
             videoPlayer.Play();
+            PlayerVideo.instance.IniciarVideo(videoPlayer.clip);
         }
         else
         {
