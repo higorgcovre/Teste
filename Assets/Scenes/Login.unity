@@ -5045,7 +5045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &733492034
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5343,10 +5343,11 @@ MonoBehaviour:
   emailChangePassword: {fileID: 647543941}
   newPassword: {fileID: 886260452}
   warningChangePassText: {fileID: 255428881}
-  loginTela: {fileID: 733492033}
   registroTela: {fileID: 977884240}
   senhaTela: {fileID: 1973007758}
   emailTela: {fileID: 1478364225}
+  atualTela: {fileID: 0}
+  loginTela: {fileID: 733492033}
 --- !u!4 &790798230
 Transform:
   m_ObjectHideFlags: 0
