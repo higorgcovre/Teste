@@ -1861,7 +1861,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519580460}
         m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: QuitLobby
+        m_MethodName: SceneEnter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
