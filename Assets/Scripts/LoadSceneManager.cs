@@ -33,7 +33,7 @@ public class LoadSceneManager : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(2);
 
         asyncOperation.allowSceneActivation = false;
 
