@@ -1,9 +1,13 @@
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public static NetworkManager Instance { get; private set; }
+    
+    public Transform[] spawnsNormal;
+    public Transform[] spawnsMasters;
 
     public void Awake()
     {
@@ -63,6 +67,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void EnterRoom()
     {
         PhotonNetwork.JoinRoom("Auditório");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        print("Você entrou na sala!");
+
+        PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity);
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerEnteredRoom(Player newPlayer)
