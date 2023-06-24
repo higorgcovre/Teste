@@ -9,7 +9,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public Transform[] spawnsNormal;
     public Transform[] spawnsMasters;
-    public Recorder recorder;
 
     public void Awake()
     {
@@ -25,8 +24,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.ConnectUsingSettings(); 
-        recorder.TransmitEnabled = true;
+        PhotonNetwork.ConnectUsingSettings();
     }
     //--------------------------------------------------------------------------
     public override void OnConnectedToMaster()

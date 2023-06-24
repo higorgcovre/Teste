@@ -1,14 +1,12 @@
 using UnityEngine;
 using Photon.Pun;
 using TMPro;
+using Photon.Voice.Unity;
 
 public class SystemUser : MonoBehaviour
 {
     public Rigidbody rb;
-
-    public Transform[] spawnsNormal;
-    public Transform[] spawnsMasters;
-
+    public Recorder recorder;
     public TextMeshPro nome;
     public PhotonView photonView;
     void Start()
@@ -17,8 +15,8 @@ public class SystemUser : MonoBehaviour
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
         }
-        NetworkManager.Instance.spawnsMasters = spawnsMasters;
-        NetworkManager.Instance.spawnsNormal = spawnsNormal;
+
+        recorder.TransmitEnabled = true;
     }
     void Update()
     {
