@@ -33,7 +33,9 @@ public class ParticipanteManagement : MonoBehaviour
     }
     public void EscolherVideo()
     {
+#if UNITY_EDITOR
         path = EditorUtility.OpenFilePanel("Mostrando todos os vídeos", "", "mp4");
+#endif        
         if (path != null)
         {
             print("O caminho foi salvo");
