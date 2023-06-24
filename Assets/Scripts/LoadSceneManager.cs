@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Authentication.ExtendedProtection;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

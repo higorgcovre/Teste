@@ -13,7 +13,10 @@ public class SystemUser : MonoBehaviour
     public PhotonView photonView;
     void Start()
     {
-        nome.text = PhotonNetwork.LocalPlayer.NickName;
+        if (photonView.IsMine)
+        {
+            nome.text = PhotonNetwork.LocalPlayer.NickName;
+        }
         NetworkManager.Instance.spawnsMasters = spawnsMasters;
         NetworkManager.Instance.spawnsNormal = spawnsNormal;
     }
