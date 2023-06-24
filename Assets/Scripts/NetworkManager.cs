@@ -1,6 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using Photon.Voice.Unity;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -8,6 +9,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public Transform[] spawnsNormal;
     public Transform[] spawnsMasters;
+    public Recorder recorder;
 
     public void Awake()
     {
@@ -24,6 +26,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings(); 
+        recorder.TransmitEnabled = true;
     }
     //--------------------------------------------------------------------------
     public override void OnConnectedToMaster()
