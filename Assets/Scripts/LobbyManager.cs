@@ -17,5 +17,6 @@ public class LobbyManager : MonoBehaviour
     public void SceneEnter()
     {
         LoadSceneManager.instance.Load(2);
+        NetworkManager.Instance.EnterRoom();
     }
 }

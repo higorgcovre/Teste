@@ -60,13 +60,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             print("Criando a sala Auditório");
             RoomOptions roomOptions = new RoomOptions { MaxPlayers = 20 };
-            PhotonNetwork.CreateRoom("Auditório", roomOptions, null);
+            PhotonNetwork.CreateRoom("Auditorio", roomOptions, null);
         }
     }
     //---------------------------------------------------------------------------
     public void EnterRoom()
     {
-        PhotonNetwork.JoinRoom("Auditório");
+        print("Entrando sala auditorio...");
+        PhotonNetwork.JoinRoom("Auditorio");
     }
 
     public override void OnJoinedRoom()
