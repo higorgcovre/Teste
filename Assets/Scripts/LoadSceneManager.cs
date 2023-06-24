@@ -21,19 +21,17 @@ public class LoadSceneManager : MonoBehaviour
 
     public void Load(int scena)
     {
-        SceneManager.LoadScene(2);
-        LoadSceneManager.scena = scena;
-        LoadScena();
+        LoadScena(scena);
     }
 
-    public void LoadScena()
+    public void LoadScena(int __scena)
     {
-        StartCoroutine(LoadScene());
+        StartCoroutine(LoadScene(__scena));
     }
 
-    IEnumerator LoadScene()
+    IEnumerator LoadScene(int _scena)
     {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(2);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_scena);
 
         asyncOperation.allowSceneActivation = false;
 
@@ -49,4 +47,5 @@ public class LoadSceneManager : MonoBehaviour
 
         print("Scena Carregada");
     }
+   
 }
