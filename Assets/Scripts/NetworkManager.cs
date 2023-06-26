@@ -1,7 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using Photon.Voice.Unity;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
@@ -82,7 +81,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         print("Um jogador está entrou na sala, o Nome dele é: " + newPlayer.NickName);
-        nomeOutroPlayer = newPlayer.NickName;
+        photonView.RPC("changeName", RpcTarget.All, newPlayer);
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -90,6 +89,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         print("Um jogador está saiu da sala, o Nome dele era: " + otherPlayer.NickName);
     }
     //---------------------------------------------------------------------------
+    [PunRPC]
+    public void changeName(Player newPlayer)
+    {
+        nomeOutroPlayer = newPlayer.NickName;
+    }
     public override void OnErrorInfo(ErrorInfo errorInfo)
     {
        print("Aconteceu um erro: " + errorInfo.Info);
