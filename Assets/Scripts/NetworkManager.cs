@@ -96,11 +96,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     //[PunRPC]
     public void changeName()
     {
-
-        if(players.Count > 1)
+        print(PhotonNetwork.PlayerList.Length);
+        if (PhotonNetwork.PlayerList.Length > 1)
         {
-            for(int i = 0; i < players.Count; i++)
-                players[i].GetComponent<SystemUser>().nome.text = PhotonNetwork.LocalPlayer.NickName;
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+                print(PhotonNetwork.PlayerList[i].NickName);
         }
         //nomeOutroPlayer = newPlayer.NickName;
     }
