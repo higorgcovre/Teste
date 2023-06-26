@@ -92,7 +92,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         print("Um jogador está entrou na sala, o Nome dele é: " + newPlayer.NickName);
         //photonView.RPC("changeName", RpcTarget.All);
-        changeName();
+
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -113,7 +113,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
                 for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
                 {
-                    spawnsNormal[0].GetChild(i).GetComponent<SystemUser>().ChangeName(PhotonNetwork.PlayerList[i].NickName);
+                    //spawnsNormal[0].GetChild(i).GetComponent<SystemUser>().ChangeName(PhotonNetwork.PlayerList[i].NickName);
                     print(PhotonNetwork.PlayerList[i].NickName);
                 }
 

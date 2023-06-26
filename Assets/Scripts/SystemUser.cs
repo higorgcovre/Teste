@@ -17,12 +17,14 @@ public class SystemUser : MonoBehaviour
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
         }
+        else ChangeName();
         recorder.TransmitEnabled = true;
     }
 
-    public void ChangeName(string name)
+    public void ChangeName()
     {
-        nome.text = name;
+        print("outro mano");
+        nome.text = PhotonNetwork.PlayerList[PhotonNetwork.LocalPlayer.ActorNumber].NickName;
     }
 
     void Update()

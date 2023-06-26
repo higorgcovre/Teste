@@ -9,10 +9,16 @@ public class Menu_Bancada : MonoBehaviour
     //Request, Vote, Presentation;
     //public GameObject R_Contact, R_Request;
     public GameObject Menu_Presentation, Notif;
+    public GameObject Prefab_PartipantVoice;
 
     private void Start()
     {
         ChangePage(0);
+    }
+
+    public void ParticipantList()
+    {
+
     }
 
     public void ChangePage(int page)
