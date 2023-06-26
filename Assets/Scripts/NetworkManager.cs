@@ -12,6 +12,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public string nomeOutroPlayer;
 
     public List<GameObject> players;
+    public int playerOutro;
 
     public void Awake()
     {
@@ -78,7 +79,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         print("Você entrou na sala!");
 
-        players.Add(PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity));
+        GameObject obj = PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity);
+        obj.name = photonView.name;
+       
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -96,12 +99,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     //[PunRPC]
     public void changeName()
     {
+        print(players.Count);
         print(PhotonNetwork.PlayerList.Length);
+
+        //for(int i = 0; i < spawnsNormal[0].childCount; i++)
+            
+
         if (PhotonNetwork.PlayerList.Length > 1)
         {
-            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-                print(PhotonNetwork.PlayerList[i].NickName);
+                for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+                {
+                    spawnsNormal[0].GetChild(i).GetComponent<SystemUser>().ChangeName(PhotonNetwork.PlayerList[i].NickName);
+                    print(PhotonNetwork.PlayerList[i].NickName);
+                }
+
         }
+        //playerOutro = PhotonNetwork.PlayerList.Length - 1;
+        //SystemUser.change = true;
         //nomeOutroPlayer = newPlayer.NickName;
     }
     public override void OnErrorInfo(ErrorInfo errorInfo)

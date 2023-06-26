@@ -9,22 +9,30 @@ public class SystemUser : MonoBehaviour
     public Recorder recorder;
     public TextMeshPro nome;
     public PhotonView photonView;
+
+    public static bool change;
     void Start()
     {
         if (photonView.IsMine)
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
         }
-        else
-        {
-            nome.text = NetworkManager.Instance.nomeOutroPlayer;
-        }
-
         recorder.TransmitEnabled = true;
+    }
+
+    public void ChangeName(string name)
+    {
+        nome.text = name;
     }
 
     void Update()
     {
+        //if (change)
+        //{
+        //    change = false;
+        //    ChangeName();
+        //}
+
         if (photonView.IsMine)
         {
             float rotation = Input.GetAxis("Horizontal");
