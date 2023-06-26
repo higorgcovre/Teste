@@ -80,8 +80,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         print("Você entrou na sala!");
 
         GameObject obj = PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity);
-        obj.name = photonView.name;
+        print(spawnsNormal[0]);
         obj.transform.SetParent(spawnsNormal[0], false);
+        obj.name = PhotonNetwork.LocalPlayer.NickName;
+        print(obj.name);
+        
        
     }
     //---------------------------------------------------------------------------
