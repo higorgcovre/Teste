@@ -15,6 +15,10 @@ public class SystemUser : MonoBehaviour
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
         }
+        else
+        {
+            nome.text = NetworkManager.Instance.nomeOutroPlayer;
+        }
 
         recorder.TransmitEnabled = true;
     }
