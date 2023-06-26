@@ -81,6 +81,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         GameObject obj = PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity);
         obj.name = photonView.name;
+        obj.transform.SetParent(spawnsNormal[0], false);
        
     }
     //---------------------------------------------------------------------------
