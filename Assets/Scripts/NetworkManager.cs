@@ -79,13 +79,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         print("Você entrou na sala!");
 
         players.Add(PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity));
+        changeName();
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         print("Um jogador está entrou na sala, o Nome dele é: " + newPlayer.NickName);
         //photonView.RPC("changeName", RpcTarget.All);
-        changeName();
+        
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -96,12 +97,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     //[PunRPC]
     public void changeName()
     {
-        if(players.Count > 1)
+        if (players.Count > 0)
         {
-            for(int i = 0; i < players.Count; i++)
-                players[i].GetComponent<SystemUser>().nome.text = PhotonNetwork.LocalPlayer.NickName;
+            foreach (GameObject playerObject in players)
+            {
+                SystemUser systemUser = playerObject.GetComponent<SystemUser>();
+                if (systemUser != null)
+                {
+                    systemUser.nome.text = PhotonNetwork.NickName;
+                }
+            }
         }
-        //nomeOutroPlayer = newPlayer.NickName;
     }
     public override void OnErrorInfo(ErrorInfo errorInfo)
     {
