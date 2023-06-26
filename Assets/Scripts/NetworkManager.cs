@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public Transform[] spawnsNormal;
     public Transform[] spawnsMasters;
+    public string nomeOutroPlayer;
 
     public void Awake()
     {
@@ -81,6 +82,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         print("Um jogador está entrou na sala, o Nome dele é: " + newPlayer.NickName);
+        nomeOutroPlayer = newPlayer.NickName;
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerLeftRoom(Player otherPlayer)
