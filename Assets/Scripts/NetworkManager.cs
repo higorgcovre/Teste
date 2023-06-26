@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
@@ -9,6 +10,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Transform[] spawnsNormal;
     public Transform[] spawnsMasters;
     public string nomeOutroPlayer;
+
+    public List<GameObject> players;
 
     public void Awake()
     {
@@ -75,13 +78,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         print("Você entrou na sala!");
 
-        PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity);
+        players.Add(PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", spawnsNormal[0].position, Quaternion.identity));
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         print("Um jogador está entrou na sala, o Nome dele é: " + newPlayer.NickName);
-        photonView.RPC("changeName", RpcTarget.All, newPlayer);
+        //photonView.RPC("changeName", RpcTarget.All);
+        changeName();
     }
     //---------------------------------------------------------------------------
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -89,10 +93,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         print("Um jogador está saiu da sala, o Nome dele era: " + otherPlayer.NickName);
     }
     //---------------------------------------------------------------------------
-    [PunRPC]
-    public void changeName(Player newPlayer)
+    //[PunRPC]
+    public void changeName()
     {
-        nomeOutroPlayer = newPlayer.NickName;
+        if(players.Count > 1)
+        {
+            for(int i = 0; i < players.Count; i++)
+                players[i].GetComponent<SystemUser>().nome.text = PhotonNetwork.LocalPlayer.NickName;
+        }
+        //nomeOutroPlayer = newPlayer.NickName;
     }
     public override void OnErrorInfo(ErrorInfo errorInfo)
     {

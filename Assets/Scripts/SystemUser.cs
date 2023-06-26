@@ -22,6 +22,7 @@ public class SystemUser : MonoBehaviour
 
         recorder.TransmitEnabled = true;
     }
+
     void Update()
     {
         if (photonView.IsMine)
