@@ -96,6 +96,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     //[PunRPC]
     public void changeName()
     {
+
         if(players.Count > 1)
         {
             for(int i = 0; i < players.Count; i++)
