@@ -23,8 +23,9 @@ public class SystemUser : MonoBehaviour
 
     public void ChangeName()
     {
-        print("outro mano");
-        nome.text = PhotonNetwork.PlayerList[PhotonNetwork.LocalPlayer.ActorNumber].NickName;
+        print(photonView.Owner.NickName);
+        nome.text = photonView.Owner.NickName;
+            //PhotonNetwork.PlayerList[PhotonNetwork.LocalPlayer.ActorNumber].NickName;
     }
 
     void Update()
