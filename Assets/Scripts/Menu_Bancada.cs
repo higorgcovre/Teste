@@ -147,6 +147,10 @@ public class Menu_Bancada : MonoBehaviour
         print("Proposta Enviar");
     }
 
+    public void Mutar()
+    {
+        FindObjectOfType<SystemUser>().MuteRPC();
+    }
     public void GetPropostaVote(string name, string desc)
     {
         VoteTitle.text = name;

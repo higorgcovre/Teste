@@ -45,6 +45,8 @@ MonoBehaviour:
   - Votacao
   - EnviarVotacao
   - ShowVideo
+  - MuteRPC
+  - MuteRPCPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
