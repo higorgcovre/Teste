@@ -1,6 +1,5 @@
 using Photon.Pun;
 using Photon.Realtime;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
@@ -19,7 +18,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             gameObject.SetActive(false);
             return;
         }
-
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -76,7 +74,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         print("Você entrou na sala!");
-
         PhotonNetwork.Instantiate("(RIG) BodyMan_1_SystemUser Variant", new Vector3(0,0,0), Quaternion.identity);
     }
     //---------------------------------------------------------------------------
@@ -90,8 +87,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         print("Um jogador está saiu da sala, o Nome dele era: " + otherPlayer.NickName);
     }
-    //---------------------------------------------------------------------------
-
+    //--------------------------------------------------------------------------
     public override void OnErrorInfo(ErrorInfo errorInfo)
     {
        print("Aconteceu um erro: " + errorInfo.Info);

@@ -3,6 +3,7 @@ using Photon.Pun;
 using TMPro;
 using Photon.Voice.Unity;
 using UnityEngine.SceneManagement;
+using Photon.Voice.PUN;
 
 public class SystemUser : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class SystemUser : MonoBehaviour
     public Recorder recorder;
     public TextMeshPro nome;
     public PhotonView photonView;
-
+    public string playerName;
     public static bool change;
     void Start()
     {
@@ -23,23 +24,39 @@ public class SystemUser : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
             FindObjectOfType<Menu_Bancada>().ParticipantList();
-
     }
-
     public void ChangeName()
     {
-        print(photonView.Owner.NickName);
         nome.text = photonView.Owner.NickName;
     }
+    private void MuteAllOtherPlayers()
+    {
+        var playerVoices = FindObjectsOfType<PhotonVoiceView>();
 
+        foreach (var playerVoice in playerVoices)
+        {
+            if (!photonView.IsMine) 
+            { 
+                recorder.TransmitEnabled = false;
+            }
+        }
+    }
+    private void MutePlayer()
+    {
+        var playerVoices = FindObjectsOfType<PhotonVoiceView>();
+        //playerName = 
+        foreach (var playerVoice in playerVoices)
+        {
+            if (playerVoice.gameObject.GetComponent<PhotonView>().Owner.NickName == playerName)
+            {
+                var recorder = playerVoice.GetComponent<Recorder>();
+                recorder.TransmitEnabled = false;
+                break;
+            }
+        }
+    }
     void Update()
     {
-        //if (change)
-        //{
-        //    change = false;
-        //    ChangeName();
-        //}
-
         if (photonView.IsMine)
         {
             float rotation = Input.GetAxis("Horizontal");
