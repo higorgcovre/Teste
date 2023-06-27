@@ -32,29 +32,17 @@ public class SystemUser : MonoBehaviour
         nome.text = photonView.Owner.NickName;
     }
 
-    void Update()
+    [PunRPC]
+    public void MuteRPC()
     {
-        //if (change)
-        //{
-        //    change = false;
-        //    ChangeName();
-        //}
-
-        if (photonView.IsMine)
+        recorder.TransmitEnabled = !recorder.TransmitEnabled;
+    }
+    [PunRPC]
+    public void MuteRPCPlayer()
+    {
+        if ( PhotonNetwork.LocalPlayer.NickName == name)
         {
-            float rotation = Input.GetAxis("Horizontal");
-            float speed = Input.GetAxis("Vertical");
-
-            Quaternion rot = rb.rotation * Quaternion.Euler(0, rotation * Time.deltaTime * 60, 0);
-            rb.MoveRotation(rot);
-            Vector3 force = rot * Vector3.forward * speed * 1000 * Time.deltaTime;
-
-            rb.AddForce(force);
-
-            if (rb.velocity.magnitude > 2)
-            {
-                rb.velocity = rb.velocity.normalized * 2;
-            }
+            recorder.TransmitEnabled = !recorder.TransmitEnabled;
         }
     }
 }
