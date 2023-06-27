@@ -24,10 +24,10 @@ public class VoiceChatManager : MonoBehaviourPunCallbacks
 
     public void Mute()
     {
-        if (!photonView.IsMine) 
-        {
+        //if (!photonView.IsMine) 
+        //{
             recorder.TransmitEnabled = !recorder.TransmitEnabled;
-        }
+        //}
 
         if (recorder.TransmitEnabled)
             GetComponent<UnityEngine.UI.Image>().sprite = enable;
