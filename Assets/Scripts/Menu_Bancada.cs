@@ -31,17 +31,16 @@ public class Menu_Bancada : MonoBehaviour
                 Destroy(ParticipantsVoice[i]);
             ParticipantsVoice.Clear();
         }
-        print(PhotonNetwork.PlayerList.Length);
             for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
                 InstantiatePrefabParticipantVoice(i);
     }
 
     void InstantiatePrefabParticipantVoice(int i)
     {
-
         GameObject obj = Instantiate(Prefab_PartipantVoice);
         obj.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = PhotonNetwork.PlayerList[i].NickName;
         obj.transform.SetParent(contentParticipantVoice.transform, false);
+        ParticipantsVoice.Add(obj);
     }
 
     public void ChangePage(int page)
