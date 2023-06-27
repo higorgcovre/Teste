@@ -1,5 +1,7 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,10 +11,37 @@ public class Menu_Bancada : MonoBehaviour
     //Request, Vote, Presentation;
     //public GameObject R_Contact, R_Request;
     public GameObject Menu_Presentation, Notif;
+    public GameObject contentParticipantVoice;
+    public GameObject Prefab_PartipantVoice;
+
+    public List<GameObject> ParticipantsVoice;
+
 
     private void Start()
     {
         ChangePage(0);
+        ParticipantList();
+    }
+
+    public void ParticipantList()
+    {
+        if (ParticipantsVoice.Count > 0)
+        {
+            for (int i = 0; i < ParticipantsVoice.Count; i++)
+                Destroy(ParticipantsVoice[i]);
+            ParticipantsVoice.Clear();
+        }
+        print(PhotonNetwork.PlayerList.Length);
+            for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+                InstantiatePrefabParticipantVoice(i);
+    }
+
+    void InstantiatePrefabParticipantVoice(int i)
+    {
+
+        GameObject obj = Instantiate(Prefab_PartipantVoice);
+        obj.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = PhotonNetwork.PlayerList[i].NickName;
+        obj.transform.SetParent(contentParticipantVoice.transform, false);
     }
 
     public void ChangePage(int page)

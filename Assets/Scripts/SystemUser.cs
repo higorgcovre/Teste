@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 using Photon.Voice.Unity;
+using UnityEngine.SceneManagement;
 
 public class SystemUser : MonoBehaviour
 {
@@ -17,12 +18,18 @@ public class SystemUser : MonoBehaviour
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
         }
+        else ChangeName();
         recorder.TransmitEnabled = true;
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+            FindObjectOfType<Menu_Bancada>().ParticipantList();
+
     }
 
-    public void ChangeName(string name)
+    public void ChangeName()
     {
-        nome.text = name;
+        print(photonView.Owner.NickName);
+        nome.text = photonView.Owner.NickName;
     }
 
     void Update()
