@@ -38,9 +38,9 @@ public class SystemUser : MonoBehaviour
         recorder.TransmitEnabled = !recorder.TransmitEnabled;
     }
     [PunRPC]
-    public void MuteRPCPlayer()
+    public void MuteRPCPlayer(string _name)
     {
-        if ( PhotonNetwork.LocalPlayer.NickName == name)
+        if ( PhotonNetwork.LocalPlayer.NickName == _name)
         {
             recorder.TransmitEnabled = !recorder.TransmitEnabled;
         }
