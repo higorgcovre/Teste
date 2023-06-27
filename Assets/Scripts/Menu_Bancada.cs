@@ -97,6 +97,7 @@ public class Menu_Bancada : MonoBehaviour
                 Menu[i].GetComponent<CanvasGroup>().alpha = 1;
             else Menu[i].GetComponent<CanvasGroup>().alpha = 0.2f;
         }
+        FindObjectOfType<ShowInfos>().ShowMessage();
     }
     void EnablePages(int page, GameObject[] Pages)
     {
