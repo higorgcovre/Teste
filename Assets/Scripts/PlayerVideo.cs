@@ -5,12 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+[SerializeField]
+public class VideoRecent
+{
+    public string name, caminho;
+}
 public class PlayerVideo : MonoBehaviour
 {
     public static PlayerVideo instance;
+    public static string urlVideo;
     //public Gerenciador_Video G_Video;
     public Slider s;
-    public VideoPlayer videoPlayer;
+    public VideoPlayer videoPlayer, videoPresention;
     public Sprite pauseSprite, playSprite;
     public Image playButton;
 
@@ -20,8 +26,8 @@ public class PlayerVideo : MonoBehaviour
     public float frame;
     void Start()
     {
+        if(gameObject.name == "Menu")
         instance = GetComponent<PlayerVideo>();
-        //G_Video = GetComponent<Gerenciador_Video>();
     }
     void Update()
     {
@@ -48,9 +54,11 @@ public class PlayerVideo : MonoBehaviour
                 videoPlayer.frame = (long)frame;
                 t_Atual.text = corrigirTempo((int)videoPlayer.time).ToString();
             }
+            videoPresention = videoPlayer;
         }
     }
 
+   
     public string corrigirTempo(int tempo)
     {
         int min = tempo % 3600 / 60;
@@ -58,17 +66,22 @@ public class PlayerVideo : MonoBehaviour
         return string.Format("{0:D2}:{1:D2}", min, seg);
     }
 
-    public void IniciarVideo(VideoClip videoClip)
+    public void IniciarVideo(string url)
     {
         videoPlayer.targetTexture.Release();
-        videoPlayer.clip = videoClip;
+        videoPlayer.url = url;
+        videoPresention.url = url;
+        urlVideo = url;
+        //videoPlayer.Play();
+        //videoPlayer.clip = videoClip;
         double time = videoPlayer.frameCount / videoPlayer.frameRate;
         t_Atual.text = "00:00";
         t_total.text = corrigirTempo((int)time);
         s.value = 0;
         pause = true;
-        playButton.sprite = playSprite;
+        playButton.sprite = pauseSprite;
         videoPlayer.Play();
+        videoPresention.Play();
     }
 
     void atualizarSlider()

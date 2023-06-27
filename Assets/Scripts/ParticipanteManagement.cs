@@ -56,7 +56,7 @@ public class ParticipanteManagement : MonoBehaviour
     private IEnumerator UploadVideo(string caminhoLocalDoVideo)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
-        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + name);
+        videoRef = storage.GetReferenceFromUrl(caminhoNoBucket + textoNomeVideo.text);
         var videoUpTask = videoRef.PutFileAsync(caminhoLocalDoVideo);
         yield return new WaitUntil(predicate: () => videoUpTask.IsCompleted);
 
@@ -64,20 +64,23 @@ public class ParticipanteManagement : MonoBehaviour
         {
             print("Ocorreu algum erro: " + videoUpTask.Exception);
         }
+
+        Menu_Bancada.instance.AddVideoRecents(textoNomeVideo.text, caminhoNoBucket + textoNomeVideo.text);
+
         print("Video enviado com sucesso!");
         print("Carregou!!");
 
     }
     public void DownLoadVideoEnter()
     {
-        StartCoroutine(DownLoadVideoFromFirebaseStorage());
+        StartCoroutine(DownLoadVideoFromFirebaseStorage(name));
        
     }
-    private IEnumerator DownLoadVideoFromFirebaseStorage()
+    private IEnumerator DownLoadVideoFromFirebaseStorage(string name)
     {
         FirebaseStorage storage = FirebaseStorage.DefaultInstance;
 
-        string a = caminhoNoBucket + "Canvas_Participant";
+        string a = caminhoNoBucket + name;
         videoRef = storage.GetReferenceFromUrl(a);
         var videoDownTask = videoRef.GetDownloadUrlAsync();
 
@@ -86,9 +89,10 @@ public class ParticipanteManagement : MonoBehaviour
         if (!videoDownTask.IsFaulted && !videoDownTask.IsCanceled)
         {
             string videoUrl = videoDownTask.Result.ToString();
-            videoPlayer.url = videoUrl;
-            videoPlayer.Play();
-            PlayerVideo.instance.IniciarVideo(videoPlayer.clip);
+            //videoPlayer.url = videoUrl;
+            //videoPlayer.Play();
+            //textoNameVideo.text = name;
+            FindObjectOfType<Menu_Bancada>().OpenVideo(videoUrl);
         }
         else
         {
