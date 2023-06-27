@@ -27,6 +27,12 @@ public class Menu_Bancada : MonoBehaviour
 
     public VideoPlayer presention;
 
+    [Header("Vote")]
+    public TextMeshProUGUI VoteTitle;
+    public TextMeshProUGUI VoteDesc;
+    public TextMeshProUGUI voteT, voteD;
+
+
     private void Start()
     {
         instance = GetComponent<Menu_Bancada>();
@@ -97,7 +103,6 @@ public class Menu_Bancada : MonoBehaviour
                 Menu[i].GetComponent<CanvasGroup>().alpha = 1;
             else Menu[i].GetComponent<CanvasGroup>().alpha = 0.2f;
         }
-        FindObjectOfType<ShowInfos>().ShowMessage();
     }
     void EnablePages(int page, GameObject[] Pages)
     {
@@ -127,12 +132,25 @@ public class Menu_Bancada : MonoBehaviour
         Menu_Presentation.SetActive(false);
         EnablePages(2, Pages_Presentation);
 
-        FindObjectOfType<PlayerVideo>().IniciarVideo(videoUrl);
+        FindObjectOfType<ShowInfos>().SendVideo(videoUrl);
+        //FindObjectOfType<PlayerVideo>().IniciarVideo(videoUrl);
     }
 
     public void OpenRequest()
     {
         EnablePages(1, Pages_Request);
+    }
+
+    public void SetPropostaVote()
+    {
+        FindObjectOfType<ShowInfos>().UpdateVotacao(voteT.text, voteD.text);
+        print("Proposta Enviar");
+    }
+
+    public void GetPropostaVote(string name, string desc)
+    {
+        VoteTitle.text = name;
+        VoteDesc.text = desc;
     }
 
     public void StartPresention()
