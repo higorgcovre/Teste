@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
+using Photon.Pun;
 
 public class ParticipanteManagement : MonoBehaviour
 {
@@ -71,6 +72,7 @@ public class ParticipanteManagement : MonoBehaviour
         print("Carregou!!");
 
     }
+    [PunRPC]
     public void DownLoadVideoEnter()
     {
         StartCoroutine(DownLoadVideoFromFirebaseStorage(name));
