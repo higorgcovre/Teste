@@ -35368,6 +35368,8 @@ GameObject:
   - component: {fileID: 1673409954}
   - component: {fileID: 1673409953}
   - component: {fileID: 1673409952}
+  - component: {fileID: 1673409957}
+  - component: {fileID: 1673409956}
   m_Layer: 0
   m_Name: "TelaVota\xE7\xE3o"
   m_TagString: Untagged
@@ -35455,6 +35457,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -31.642, z: 90}
+--- !u!114 &1673409956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673409951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c29b0cf0ecd3a4299baab8b43c4fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  YesVotesT: {fileID: 211665367}
+  noVotesT: {fileID: 1410686550}
+  YesVotes: 0
+  noVotes: 0
+  photonView: {fileID: 1673409957}
+--- !u!114 &1673409957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673409951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1674714070
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class Vote : MonoBehaviour
 
     public TextMeshProUGUI YesVotesT, noVotesT;
     public int YesVotes, noVotes;
-    PhotonView photonView;
+    public PhotonView photonView;
 
     public void VoteYes()
     {
