@@ -6,10 +6,9 @@ using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
 using Photon.Pun;
-using UnityEngine.UI;
-using System.Collections.Generic;
 
-public class ParticipanteManagement : MonoBehaviour
+
+public class ParticipanteManagement : MonoBehaviourPunCallbacks
 {
     private int nVotosSim, nVotosNao;
     [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
@@ -111,17 +110,25 @@ public class ParticipanteManagement : MonoBehaviour
     {
         if (permitidoVotar)
         {
-            FindObjectOfType<Vote>().VoteYes();
+            photonView.RPC("VoteiSim", RpcTarget.All);
         }
         permitidoVotar = false;
 
+    }
+    public void voteiSim()
+    {
+        FindObjectOfType<Vote>().VoteYes();
     }
     public void votarNao()
     {
         if (permitidoVotar)
         {
-            FindObjectOfType<Vote>().VoteNo();
+            photonView.RPC("VoteiNao", RpcTarget.All);
         }
         permitidoVotar = false;
     }    
+    public void voteiNao()
+    {
+        FindObjectOfType<Vote>().VoteNo();
+    }
 }

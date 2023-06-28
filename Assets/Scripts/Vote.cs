@@ -4,30 +4,35 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Vote : MonoBehaviour
+public class Vote : MonoBehaviourPunCallbacks
 {
 
     public TextMeshProUGUI YesVotesT, noVotesT;
-    public int YesVotes, noVotes;
-    public PhotonView photonView;
+    public bool yesVote, noVote;
 
     public void VoteYes()
     {
-        YesVotes = int.Parse(YesVotesT.text);
-        YesVotes++;
+        yesVote = true;
         photonView.RPC("UpdateVotes", RpcTarget.All);
     }
     public void VoteNo() 
     {
-        noVotes = int.Parse(noVotesT.text);
-        noVotes++;
+        noVote = true;
         photonView.RPC("UpdateVotes", RpcTarget.All);
     }
     [PunRPC]
-    public void UpdateVotes()
+    public void UpdateVotes(int _votes)
     {
-        YesVotesT.text = YesVotes.ToString();
-        noVotesT.text = noVotes.ToString();
+        if (yesVote)
+        {
+            var nVotoY = int.Parse(YesVotesT.text) + 1;
+            YesVotesT.text = nVotoY.ToString();
+        }
+        if (noVote)
+        {
+            var nVotoN = int.Parse(YesVotesT.text) + 1;
+            noVotesT.text = nVotoN.ToString();
+        }
     }
 
 }
