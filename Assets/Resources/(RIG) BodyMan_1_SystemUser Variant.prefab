@@ -482,6 +482,7 @@ MonoBehaviour:
   recorder: {fileID: 6582174900483713654}
   nome: {fileID: 678652031}
   photonView: {fileID: 47460945}
+  bancada: 0
 --- !u!114 &47460949
 MonoBehaviour:
   m_ObjectHideFlags: 0

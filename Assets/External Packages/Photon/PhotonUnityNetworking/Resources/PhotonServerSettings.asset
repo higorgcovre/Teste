@@ -47,6 +47,7 @@ MonoBehaviour:
   - ShowVideo
   - MuteRPC
   - MuteRPCPlayer
+  - SendPresention
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -5,7 +5,12 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Video;
-
+[SerializeField]
+[System.Serializable]
+public class Proposta
+{
+    public string name, descricao, url;
+}
 public class Menu_Bancada : MonoBehaviour
 {
     public static Menu_Bancada instance;
@@ -32,12 +37,21 @@ public class Menu_Bancada : MonoBehaviour
     public TextMeshProUGUI VoteDesc;
     public TextMeshProUGUI voteT, voteD;
 
+    [Header("Presention")]
+    public List<Proposta> propostas = new List<Proposta>();
+    public List<GameObject> propostasSend;
+    public TMP_InputField description;
+    public bool participant;
+    public string url;
+    public TextMeshProUGUI messageNum;
+    public GameObject prefab_Proposta, content_proposta;
 
     private void Start()
     {
         instance = GetComponent<Menu_Bancada>();
         ChangePage(0);
         ParticipantList();
+        UpdatePresention();
     }
 
     public void AddVideoRecents(string name, string caminho)
@@ -132,7 +146,9 @@ public class Menu_Bancada : MonoBehaviour
         Menu_Presentation.SetActive(false);
         EnablePages(2, Pages_Presentation);
 
-        FindObjectOfType<ShowInfos>().SendVideo(videoUrl);
+        if (!participant)
+            FindObjectOfType<ShowInfos>().SendVideo(videoUrl);
+        else url = videoUrl;
         //FindObjectOfType<PlayerVideo>().IniciarVideo(videoUrl);
     }
 
@@ -155,6 +171,49 @@ public class Menu_Bancada : MonoBehaviour
     {
         VoteTitle.text = name;
         VoteDesc.text = desc;
+    }
+
+    public void SetPresention()
+    {
+        Proposta proposta = new Proposta();
+        proposta.name = PhotonNetwork.LocalPlayer.NickName;
+        proposta.descricao = description.text;
+        proposta.url = url;
+        FindObjectOfType<ShowInfos>().EnviarApresentacao(proposta);
+    }
+
+    public void GetPresention(string name, string descricao, string url)
+    {
+        print("Atualizando Propostas");
+        Proposta proposta = new Proposta();
+        proposta.name = name;
+        proposta.descricao = descricao;
+        proposta.url = url;
+
+        propostas.Add(proposta);
+        UpdatePresention();
+    }
+
+    void UpdatePresention()
+    {
+        print("Mostrando Propostas");
+
+        ClearLists(propostasSend);
+
+        for (int i = 0; i < propostas.Count; i++)
+        {
+            InstantiatePrefabProposta(i, propostas[i]);
+        }
+        messageNum.text = propostas.Count.ToString();
+    }
+    void InstantiatePrefabProposta(int i, Proposta proposta)
+    {
+        GameObject obj = Instantiate(prefab_Proposta);
+        obj.transform.Find("name").GetComponent<TextMeshProUGUI>().text = proposta.name;
+        obj.name = i.ToString();
+        obj.transform.SetParent(content_proposta.transform, false);
+        propostasSend.Add(obj);
+        
     }
 
     public void StartPresention()

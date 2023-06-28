@@ -1,8 +1,10 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
 public class ShowInfos : MonoBehaviour
 {
     PhotonView view;
@@ -23,7 +25,7 @@ public class ShowInfos : MonoBehaviour
     [PunRPC]
     public void Votacao()
     {
-        
+
     }
 
     [PunRPC]
@@ -32,9 +34,9 @@ public class ShowInfos : MonoBehaviour
         Menu_Bancada.instance.GetPropostaVote(proposta, descricao);
     }
 
-    public void EnviarApresentacao()
+    public void EnviarApresentacao(Proposta proposta)
     {
-
+        view.RPC("SendPresention", RpcTarget.All, proposta.name, proposta.descricao, proposta.url);
     }
 
     public void ApresentarVideo()
@@ -47,6 +49,16 @@ public class ShowInfos : MonoBehaviour
     {
         print("Mostrando Video para geral");
         FindObjectOfType<PlayerVideo>().IniciarVideo(url);
+    }
+
+    [PunRPC]
+
+    public void SendPresention(string name, string descricao, string url)
+    {
+        print("Proposta Enviada");
+        FindObjectOfType<Menu_Bancada>().GetPresention(name, descricao, url);
+
+
     }
 
 
