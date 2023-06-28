@@ -43,7 +43,8 @@ public class Menu_Bancada : MonoBehaviour
     public TMP_InputField description;
     public bool participant;
     public string url;
-    public TextMeshProUGUI messageNum;
+    public int atual;
+    public TextMeshProUGUI messageNum, nameParticipant, descriptionParticipant;
     public GameObject prefab_Proposta, content_proposta;
 
     private void Start()
@@ -161,6 +162,20 @@ public class Menu_Bancada : MonoBehaviour
     {
         FindObjectOfType<ShowInfos>().UpdateVotacao(voteT.text, voteD.text);
         print("Proposta Enviar");
+    }
+
+    public void OpenPresention(int i)
+    {
+        
+    }
+    public void AceitarPresention()
+    {
+
+    }
+
+    public void RecusePresention()
+    {
+
     }
 
     public void Mutar()

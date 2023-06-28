@@ -11,4 +11,9 @@ public class Mute : MonoBehaviour
     {
         FindObjectOfType<SystemUser>().MuteAll();
     }
+
+    public void OpenPresention()
+    {
+        FindObjectOfType<Menu_Bancada>().OpenPresention(int.Parse(name));
+    }
 }
