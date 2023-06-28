@@ -10,10 +10,12 @@ public class SystemUser : MonoBehaviour
     public Recorder recorder;
     public TextMeshPro nome;
     public PhotonView photonView;
+    public bool bancada;
 
     public static bool change;
     void Start()
     {
+
         if (photonView.IsMine)
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
@@ -37,13 +39,18 @@ public class SystemUser : MonoBehaviour
     }
     public void MuteAll()
     {
-        photonView.RPC("MuteRPC", RpcTarget.All);
+        
+       photonView.RPC("MuteRPC", RpcTarget.All);
+        
     }
 
     [PunRPC]
     public void MuteRPC()
     {
-        recorder.TransmitEnabled = !recorder.TransmitEnabled;
+        if (!bancada)
+        {
+            recorder.TransmitEnabled = !recorder.TransmitEnabled;
+        }
     }
     [PunRPC]
     public void MuteRPCPlayer(string _name)
