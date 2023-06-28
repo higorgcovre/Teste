@@ -111,8 +111,7 @@ public class ParticipanteManagement : MonoBehaviour
     {
         if (permitidoVotar)
         {
-            nVotosSim++;
-            nVotosSimT.text += nVotosSim.ToString();
+            FindObjectOfType<Vote>().VoteYes();
         }
         permitidoVotar = false;
 
@@ -121,8 +120,7 @@ public class ParticipanteManagement : MonoBehaviour
     {
         if (permitidoVotar)
         {
-            nVotosNao++;
-            nVotosNaoT.text += nVotosNao.ToString();
+            FindObjectOfType<Vote>().VoteNo();
         }
         permitidoVotar = false;
     }    
