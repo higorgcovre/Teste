@@ -110,7 +110,7 @@ public class ParticipanteManagement : MonoBehaviourPunCallbacks
     {
         if (permitidoVotar)
         {
-            photonView.RPC("VoteiSim", RpcTarget.All);
+            photonView.RPC("voteiSim", RpcTarget.All);
         }
         permitidoVotar = false;
 
@@ -124,7 +124,7 @@ public class ParticipanteManagement : MonoBehaviourPunCallbacks
     {
         if (permitidoVotar)
         {
-            photonView.RPC("VoteiNao", RpcTarget.All);
+            photonView.RPC("voteiNao", RpcTarget.All);
         }
         permitidoVotar = false;
     }
