@@ -115,6 +115,7 @@ public class ParticipanteManagement : MonoBehaviourPunCallbacks
         permitidoVotar = false;
 
     }
+    [PunRPC]
     public void voteiSim()
     {
         FindObjectOfType<Vote>().VoteYes();
@@ -126,7 +127,8 @@ public class ParticipanteManagement : MonoBehaviourPunCallbacks
             photonView.RPC("VoteiNao", RpcTarget.All);
         }
         permitidoVotar = false;
-    }    
+    }
+    [PunRPC]
     public void voteiNao()
     {
         FindObjectOfType<Vote>().VoteNo();
