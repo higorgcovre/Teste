@@ -112,9 +112,9 @@ public class ParticipanteManagement : MonoBehaviour
         if (permitidoVotar)
         {
             nVotosSim++;
-            nVotosSimT.text = nVotosSim.ToString();
+            nVotosSimT.text += nVotosSim.ToString();
         }
-        permitidoVotar = !permitidoVotar;
+        permitidoVotar = false;
 
     }
     public void votarNao()
@@ -122,8 +122,8 @@ public class ParticipanteManagement : MonoBehaviour
         if (permitidoVotar)
         {
             nVotosNao++;
-            nVotosNaoT.text = nVotosNao.ToString();
+            nVotosNaoT.text += nVotosNao.ToString();
         }
-        permitidoVotar = !permitidoVotar;
+        permitidoVotar = false;
     }    
 }
