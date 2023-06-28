@@ -21,7 +21,7 @@ public class Vote : MonoBehaviourPunCallbacks
         photonView.RPC("UpdateVotes", RpcTarget.All);
     }
     [PunRPC]
-    public void UpdateVotes(int _votes)
+    public void UpdateVotes()
     {
         if (yesVote)
         {
