@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Video;
 using System.Collections;
 using Photon.Pun;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class ParticipanteManagement : MonoBehaviour
 {
@@ -13,10 +15,13 @@ public class ParticipanteManagement : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nVotosSimT, nVotosNaoT;
     [SerializeField] private bool permitidoVotar = true;
     [SerializeField] private TextMeshProUGUI textoDescricao, textoNomeVideo, textoNameVideo;
+
     public VideoPlayer videoPlayer;
     private string path;
     private string caminhoNoBucket = "gs://teste-cambui02.appspot.com/";
     private StorageReference videoRef;
+
+    public bool participant;
 
     void Start()
     {
@@ -32,6 +37,8 @@ public class ParticipanteManagement : MonoBehaviour
             }
         });
     }
+
+   
     public void EscolherVideo()
     {
 #if UNITY_EDITOR
@@ -91,9 +98,7 @@ public class ParticipanteManagement : MonoBehaviour
         if (!videoDownTask.IsFaulted && !videoDownTask.IsCanceled)
         {
             string videoUrl = videoDownTask.Result.ToString();
-            //videoPlayer.url = videoUrl;
-            //videoPlayer.Play();
-            //textoNameVideo.text = name;
+            if(!participant)
             FindObjectOfType<Menu_Bancada>().OpenVideo(videoUrl);
         }
         else
@@ -101,6 +106,7 @@ public class ParticipanteManagement : MonoBehaviour
             Debug.LogError("Erro ao obter a URL do vídeo: " + videoDownTask.Exception);
         }
     }
+
     public void votarSim()
     {
         if (permitidoVotar)
