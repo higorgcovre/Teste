@@ -25,11 +25,19 @@ public class SystemUser : MonoBehaviour
             FindObjectOfType<Menu_Bancada>().ParticipantList();
 
     }
-
     public void ChangeName()
     {
         print(photonView.Owner.NickName);
         nome.text = photonView.Owner.NickName;
+    }
+
+    public void MutePLayer(string _name)
+    {
+        photonView.RPC("MuteRPCPlayer", RpcTarget.All, _name);
+    }
+    public void MuteAll()
+    {
+        photonView.RPC("MuteRPC", RpcTarget.All);
     }
 
     [PunRPC]
