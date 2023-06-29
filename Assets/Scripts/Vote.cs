@@ -13,25 +13,25 @@ public class Vote : MonoBehaviourPunCallbacks
     public void VoteYes()
     {
         yesVote = true;
-        photonView.RPC("UpdateVotes", RpcTarget.All);
+        var nVotoY = int.Parse(YesVotesT.text);
+        photonView.RPC("UpdateVotes", RpcTarget.All, nVotoY);
     }
     public void VoteNo() 
     {
         noVote = true;
-        photonView.RPC("UpdateVotes", RpcTarget.All);
+        var nVotoN = int.Parse(YesVotesT.text);
+        photonView.RPC("UpdateVotes", RpcTarget.All, nVotoN);
     }
     [PunRPC]
-    public void UpdateVotes()
+    public void UpdateVotes(int _nVoto)
     {
         if (yesVote)
         {
-            var nVotoY = int.Parse(YesVotesT.text) + 1;
-            YesVotesT.text = nVotoY.ToString();
+            YesVotesT.text = (_nVoto+1).ToString();
         }
         if (noVote)
         {
-            var nVotoN = int.Parse(YesVotesT.text) + 1;
-            noVotesT.text = nVotoN.ToString();
+            noVotesT.text = (_nVoto - 1).ToString();
         }
     }
 
