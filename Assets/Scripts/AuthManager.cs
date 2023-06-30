@@ -15,20 +15,24 @@ public class AuthManager : MonoBehaviour
 
     //Login variables
     [Header("Login")]
-    [SerializeField] private TMP_InputField emailLoginField, passwordLoginField;
+    [SerializeField] private TMP_InputField emailLoginField;
+    [SerializeField] private TMP_InputField passwordLoginField;
     [SerializeField] private TMP_Text warningLoginText, confirmLoginText;
 
     //Register variables
     [Header("Register")]
-    [SerializeField] private TMP_InputField userNameRegisterField, userSurnameRegisterField, emailRegisterField, passwordRegisterField, passwordRegisterVerifyField;
     [SerializeField] private TMP_Text warningRegisterText;
+    [SerializeField] private TMP_InputField userNameRegisterField, userSurnameRegisterField, emailRegisterField, passwordRegisterField, passwordRegisterVerifyField;
+    
 
     [Header("Change")]
-    [SerializeField] private TMP_InputField emailChangePassword, newPassword;
     [SerializeField] private TMP_Text warningChangePassText;
+    [SerializeField] private TMP_InputField emailChangePassword, newPassword;
+    
 
     [Header("Tela")]
-    [SerializeField] private GameObject registroTela, senhaTela, emailTela, atualTela, loginTela;
+    [SerializeField] private GameObject registroTela;
+    [SerializeField] private GameObject senhaTela, emailTela, atualTela, loginTela;
 
 
     private void Awake()

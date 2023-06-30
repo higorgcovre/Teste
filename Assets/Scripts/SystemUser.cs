@@ -15,7 +15,6 @@ public class SystemUser : MonoBehaviour
     public static bool change;
     void Start()
     {
-
         if (photonView.IsMine)
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
@@ -24,7 +23,10 @@ public class SystemUser : MonoBehaviour
         recorder.TransmitEnabled = true;
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
-            FindObjectOfType<Menu_Bancada>().ParticipantList();
+        {
+            print(PhotonNetwork.LocalPlayer.NickName);
+            Menu_Manager.Menu_Type = NetworkManager.Instance.SeachSelecao(PhotonNetwork.LocalPlayer.NickName);
+        }
 
     }
     public void ChangeName()

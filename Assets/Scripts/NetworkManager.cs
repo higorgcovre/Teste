@@ -1,5 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +12,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Transform[] spawnsNormal;
     public Transform[] spawnsMasters;
     public string nomeOutroPlayer;
+
+    public Dictionary<string, bool> Selecao = new Dictionary<string, bool>();
 
 
     public void Awake()
@@ -40,6 +44,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         
         if(!PhotonNetwork.InLobby)
         {
+            AddCharacter(playerName);
             print("Entrando no Lobby...");
             PhotonNetwork.JoinLobby();
         }
@@ -95,5 +100,35 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnErrorInfo(ErrorInfo errorInfo)
     {
        print("Aconteceu um erro: " + errorInfo.Info);
+    }
+
+    public void AddCharacter(string name)
+    {
+        Selecao.Add(name, false);
+        print(Selecao.Count);
+    }
+
+    public void AddSelecao(int var, string name)
+    {
+        print(name);
+        if (var == 1 && Selecao.ContainsKey(name))
+            Selecao[name] = true;
+        ShowSelecao();
+    }
+
+    public bool SeachSelecao(string name)
+    {
+        if (Selecao.ContainsKey(name))
+            return Selecao[name];
+        Debug.LogError("Não tem esse cara aqui não");
+        return false;
+
+    }
+    public void ShowSelecao()
+    {
+        foreach (var kvp in Selecao)
+        {
+            print(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+        }
     }
 }

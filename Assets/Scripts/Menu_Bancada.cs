@@ -52,7 +52,7 @@ public class Menu_Bancada : MonoBehaviour
     {
         instance = GetComponent<Menu_Bancada>();
         ChangePage(0);
-        ParticipantList();
+        //ParticipantList();
         UpdatePresention();
     }
 
