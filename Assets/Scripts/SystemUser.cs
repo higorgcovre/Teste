@@ -16,6 +16,7 @@ public class SystemUser : MonoBehaviour
     public static bool change;
     void Start()
     {
+        print("aaaaa");
         if (photonView.IsMine)
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
@@ -31,19 +32,23 @@ public class SystemUser : MonoBehaviour
             {
                 transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers -1].transform);
                 FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
-                transform.position = new Vector3(0, 0, 0);
+                transform.position = FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers - 1].transform.position;
                 print(transform.position);
             }
             else
             {
                 transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform);
                 FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
-                transform.position = new Vector3(0, 0, 0);
+                transform.position = FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform.position;
                 print(transform.position);
             }
         }
         
 
+    }
+
+    public void Update()
+    {
     }
     public void ChangeName()
     {
