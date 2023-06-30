@@ -158,10 +158,12 @@ public class Menu_Bancada : MonoBehaviour
 
     public void ShowCameraTela()
     {
-        Transform posRespaw = FindObjectOfType<Menu_Manager>().Respawns[PhotonNetwork.LocalPlayer.NickName].transform;
+        Transform posRespaw = FindObjectOfType<Menu_Manager>().Respawns[PhotonNetwork.LocalPlayer.NickName].Find("Camera");
         Camera = FindObjectOfType<Menu_Manager>().CameraLook;
-        Camera.transform.SetParent(posRespaw.transform, false);
+        Camera.transform.position = posRespaw.position;
         Camera.SetActive(true);
+        //FindObjectOfType<Menu_Manager>().Respawns[PhotonNetwork.LocalPlayer.NickName].Find("Camera").gameObject.SetActive(true);
+        //presention.targetCamera = FindObjectOfType<Menu_Manager>().Respawns[PhotonNetwork.LocalPlayer.NickName].Find("Camera").GetComponent<Camera>().
     }
 
     public void OpenRequest()
