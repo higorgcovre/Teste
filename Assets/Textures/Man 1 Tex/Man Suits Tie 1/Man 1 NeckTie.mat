@@ -26,6 +26,7 @@ Material:
   - _DETAIL_MULX2
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
+  - _OCCLUSIONMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,7 +39,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: e0659e1d8b470ed49b034c546912eb30, type: 3}
+        m_Texture: {fileID: 2800000, guid: d908da7a8f0995c45a22f533e9f80c26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -46,7 +47,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: e0659e1d8b470ed49b034c546912eb30, type: 3}
+        m_Texture: {fileID: 2800000, guid: d908da7a8f0995c45a22f533e9f80c26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -62,15 +63,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e0659e1d8b470ed49b034c546912eb30, type: 3}
+        m_Texture: {fileID: 2800000, guid: d908da7a8f0995c45a22f533e9f80c26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: d45cdf104fa5e6348bd7b3b47b175253, type: 3}
+        m_Texture: {fileID: 2800000, guid: cfe17d374b5880d46a78f5f001c6f78c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7d41168490e6a8340a1f2b565f55fbfe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -97,7 +98,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
-    - _BumpScale: 1
+    - _BumpScale: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -110,7 +111,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _OcclusionStrength: 1
+    - _OcclusionStrength: 0.25
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1

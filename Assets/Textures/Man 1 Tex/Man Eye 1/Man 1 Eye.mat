@@ -10,9 +10,8 @@ Material:
   m_Name: Man 1 Eye
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
-  - _DETAIL_SCALED
   - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
+  - _OCCLUSIONMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -25,15 +24,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 6c2d7c48e85325a43a86f4c52ee1244a, type: 3}
+        m_Texture: {fileID: 2800000, guid: d3e90b314830e594d9f4a9abab774638, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f4587dad0462c4742a88ac789ab4ac21, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: 6c2d7c48e85325a43a86f4c52ee1244a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -41,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
-        m_Texture: {fileID: 2800000, guid: f4587dad0462c4742a88ac789ab4ac21, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -49,15 +48,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6c2d7c48e85325a43a86f4c52ee1244a, type: 3}
+        m_Texture: {fileID: 2800000, guid: d3e90b314830e594d9f4a9abab774638, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 76178a2e15a8cdd4d8b4a27e1c9a7e36, type: 3}
+        m_Texture: {fileID: 2800000, guid: 30c0b2a0faecda047a4aa558d37aaad1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: af524bc7c36a823408d1d483261e273f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -97,7 +96,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _OcclusionStrength: 1
+    - _OcclusionStrength: 0.2
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1

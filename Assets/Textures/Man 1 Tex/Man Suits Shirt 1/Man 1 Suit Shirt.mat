@@ -23,7 +23,7 @@ Material:
   m_Name: Man 1 Suit Shirt
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
-  - _DETAIL_MULX2
+  - _DETAIL_SCALED
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   m_InvalidKeywords: []
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: e193116f8ed13d14a9b7d185a4e0ff0d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3420c80874e5e924bb3b53ad10b76c39, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: e193116f8ed13d14a9b7d185a4e0ff0d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3420c80874e5e924bb3b53ad10b76c39, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -62,11 +62,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e193116f8ed13d14a9b7d185a4e0ff0d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3420c80874e5e924bb3b53ad10b76c39, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: a887a6ddb399ea844a71e674724c34d2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 25628ac1b04f46548996b97fb0f4b674, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -97,13 +97,13 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
-    - _BumpScale: 1
+    - _BumpScale: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 1
-    - _DetailNormalMapScale: 2
+    - _DetailAlbedoMapScale: 0.5
+    - _DetailNormalMapScale: 1.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -114,7 +114,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.6
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
