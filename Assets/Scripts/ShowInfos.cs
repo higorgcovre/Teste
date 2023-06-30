@@ -56,6 +56,7 @@ public class ShowInfos : MonoBehaviour
     public void SendPresention(string name, string descricao, string url)
     {
         print("Proposta Enviada");
+        print(FindObjectOfType<Menu_Bancada>().name);
         FindObjectOfType<Menu_Bancada>().GetPresention(name, descricao, url);
 
 

@@ -45,6 +45,7 @@ public class Menu_Bancada : MonoBehaviour
     public string url;
     public int atual;
     public TextMeshProUGUI messageNum, nameParticipant, descriptionParticipant;
+    public VideoPlayer videoplayer;
     public GameObject prefab_Proposta, content_proposta;
 
     private void Start()
@@ -166,15 +167,23 @@ public class Menu_Bancada : MonoBehaviour
 
     public void OpenPresention(int i)
     {
-        
+        atual = i;
+        nameParticipant.text = propostas[i].name;
+        descriptionParticipant.text = propostas[i].descricao;
+        descriptionParticipant.text = propostas[i].descricao;
+        videoplayer.url = propostas[i].url;
     }
     public void AceitarPresention()
     {
-
+        StartPresention();
     }
 
     public void RecusePresention()
     {
+        Destroy(propostasSend[atual]);
+        propostas.RemoveAt(atual);
+
+        ChangeRequest(0);
 
     }
 
