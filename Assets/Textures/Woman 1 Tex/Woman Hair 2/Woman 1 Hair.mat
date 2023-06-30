@@ -10,7 +10,7 @@ Material:
   m_Name: Woman 1 Hair
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
-  - _DETAIL_SCALED
+  - _DETAIL_MULX2
   - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   m_InvalidKeywords: []
@@ -25,15 +25,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: c75c081381e1ad04d85d21508744edef, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd2572cb970cda04ca01341de1a6c1dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 17ba88e59fea48442aff153d7a6d6df5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 47d0d115e7f6fec4a81033640caba47d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: c75c081381e1ad04d85d21508744edef, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd2572cb970cda04ca01341de1a6c1dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
-        m_Texture: {fileID: 2800000, guid: 17ba88e59fea48442aff153d7a6d6df5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 47d0d115e7f6fec4a81033640caba47d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -49,11 +49,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c75c081381e1ad04d85d21508744edef, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd2572cb970cda04ca01341de1a6c1dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: d79d917f804e4624b8cf268f2110fd61, type: 3}
+        m_Texture: {fileID: 2800000, guid: b21788393b308b643a22d7a71f8dcef5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -89,8 +89,8 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DetailAlbedoMapScale: 2
-    - _DetailNormalMapScale: 2
+    - _DetailAlbedoMapScale: 1
+    - _DetailNormalMapScale: 0.75
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -101,7 +101,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.25
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

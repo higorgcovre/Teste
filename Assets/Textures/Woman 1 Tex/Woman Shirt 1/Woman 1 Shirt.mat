@@ -38,15 +38,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 70c62095c50163946bcdb5d56fb6aa01, type: 3}
+        m_Texture: {fileID: 2800000, guid: ec9c3542b543fdd4d8e9ee3d1a3fbbf5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: bda20ef96f98a3e4bbae0997aaff3b68, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d3532baf22e99542b2692979847f8f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: 70c62095c50163946bcdb5d56fb6aa01, type: 3}
+        m_Texture: {fileID: 2800000, guid: ec9c3542b543fdd4d8e9ee3d1a3fbbf5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
-        m_Texture: {fileID: 2800000, guid: bda20ef96f98a3e4bbae0997aaff3b68, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7d3532baf22e99542b2692979847f8f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -62,11 +62,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 70c62095c50163946bcdb5d56fb6aa01, type: 3}
+        m_Texture: {fileID: 2800000, guid: ec9c3542b543fdd4d8e9ee3d1a3fbbf5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: a39483967f6b23d468015cddc37af06f, type: 3}
+        m_Texture: {fileID: 2800000, guid: bf474be8cd69ef14d8b9a670ecfc4e02, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -103,7 +103,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
-    - _DetailNormalMapScale: 2
+    - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -114,7 +114,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.3
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
