@@ -20,29 +20,30 @@ public class SystemUser : MonoBehaviour
         if (photonView.IsMine)
         {
             nome.text = PhotonNetwork.LocalPlayer.NickName;
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                print(PhotonNetwork.LocalPlayer.NickName);
+                Menu_Manager.Menu_Type = NetworkManager.Instance.SeachSelecao(PhotonNetwork.LocalPlayer.NickName);
+                if (Menu_Manager.Menu_Type)
+                {
+                    transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers - 1].transform);
+                    FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
+                    transform.position = FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers - 1].transform.position;
+                    print(transform.position);
+                }
+                else
+                {
+                    transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform);
+                    FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
+                    transform.position = FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform.position;
+                    print(transform.position);
+                }
+            }
         }
         else ChangeName();
         recorder.TransmitEnabled = true;
 
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            print(PhotonNetwork.LocalPlayer.NickName);
-            Menu_Manager.Menu_Type = NetworkManager.Instance.SeachSelecao(PhotonNetwork.LocalPlayer.NickName);
-            if (Menu_Manager.Menu_Type)
-            {
-                transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers -1].transform);
-                FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
-                transform.position = FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers - 1].transform.position;
-                print(transform.position);
-            }
-            else
-            {
-                transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform);
-                FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
-                transform.position = FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform.position;
-                print(transform.position);
-            }
-        }
+        
         
 
     }
