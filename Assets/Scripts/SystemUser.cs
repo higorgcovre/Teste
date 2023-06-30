@@ -31,11 +31,13 @@ public class SystemUser : MonoBehaviour
             {
                 transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsParticipante[PhotonNetwork.CountOfPlayers -1].transform);
                 FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
+                transform.position = Vector3.zero;
             }
             else
             {
                 transform.SetParent(FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform);
                 FindObjectOfType<Menu_Manager>().Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
+                transform.position = Vector3.zero;
             }
         }
         
