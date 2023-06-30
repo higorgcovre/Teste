@@ -58,8 +58,6 @@ public class ShowInfos : MonoBehaviour
         print("Proposta Enviada");
         print(FindObjectOfType<Menu_Bancada>().name);
         FindObjectOfType<Menu_Bancada>().GetPresention(name, descricao, url);
-
-
     }
 
 

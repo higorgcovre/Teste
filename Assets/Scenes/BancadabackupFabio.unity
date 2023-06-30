@@ -456,6 +456,7 @@ MonoBehaviour:
   textoNomeVideo: {fileID: 1146402652}
   textoNameVideo: {fileID: 840471500}
   videoPlayer: {fileID: 1566946893}
+  participant: 0
 --- !u!1 &11480131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6316,6 +6317,26 @@ MonoBehaviour:
   contentParticipantVoice: {fileID: 1909823225}
   Prefab_PartipantVoice: {fileID: 4271127471846610976, guid: 402a7a6831c5ed7429bba13a6517bce2, type: 3}
   ParticipantsVoice: []
+  Prefab_VideoRecents: {fileID: 0}
+  content_VideosRecents: {fileID: 0}
+  videosRecentsPrefab: []
+  presention: {fileID: 0}
+  VoteTitle: {fileID: 0}
+  VoteDesc: {fileID: 0}
+  voteT: {fileID: 0}
+  voteD: {fileID: 0}
+  propostas: []
+  propostasSend: []
+  description: {fileID: 0}
+  participant: 0
+  url: 
+  atual: 0
+  messageNum: {fileID: 0}
+  nameParticipant: {fileID: 0}
+  descriptionParticipant: {fileID: 0}
+  videoplayer: {fileID: 0}
+  prefab_Proposta: {fileID: 0}
+  content_proposta: {fileID: 0}
 --- !u!114 &309551119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21420,37 +21441,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999318664}
   m_CullTransparentMesh: 1
---- !u!1 &1000129407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1000129408}
-  m_Layer: 0
-  m_Name: respawn (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1000129408
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000129407}
-  m_LocalRotation: {x: 0, y: 0.15680979, z: 0, w: -0.9876288}
-  m_LocalPosition: {x: -1.0538816, y: -0.70082664, z: -2.1643372}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1011316826}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1011316825
 GameObject:
   m_ObjectHideFlags: 0
@@ -21483,8 +21473,6 @@ Transform:
   - {fileID: 1134207265}
   - {fileID: 2074750014}
   - {fileID: 2091386434}
-  - {fileID: 1000129408}
-  - {fileID: 1616583267}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35637,37 +35625,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1616583266
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1616583267}
-  m_Layer: 0
-  m_Name: respawn (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1616583267
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616583266}
-  m_LocalRotation: {x: 0, y: 0.15438055, z: 0, w: 0.9880115}
-  m_LocalPosition: {x: -9.703987, y: -0.70082664, z: -2.1345901}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1011316826}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 11.861, z: 0}
 --- !u!1001 &1617380356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36781,6 +36738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s: {fileID: 2054860142}
   videoPlayer: {fileID: 123653466}
+  videoPresention: {fileID: 0}
   pauseSprite: {fileID: -1015630611, guid: 946c7c3190b4d1145ace7850dc4c587c, type: 3}
   playSprite: {fileID: -1039134116, guid: 946c7c3190b4d1145ace7850dc4c587c, type: 3}
   playButton: {fileID: 1620376526}
@@ -36811,6 +36769,7 @@ MonoBehaviour:
   textoNomeVideo: {fileID: 0}
   textoNameVideo: {fileID: 0}
   videoPlayer: {fileID: 123653466}
+  participant: 0
 --- !u!1 &1669225072
 GameObject:
   m_ObjectHideFlags: 0

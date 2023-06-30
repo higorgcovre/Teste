@@ -3,6 +3,7 @@ using Photon.Pun;
 using TMPro;
 using Photon.Voice.Unity;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class SystemUser : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class SystemUser : MonoBehaviour
     public TextMeshPro nome;
     public PhotonView photonView;
     public bool bancada;
+    public List<GameObject> respawnsBancada, respawnsParticipante;
+    public Dictionary<string, Transform> Respawns = new Dictionary<string, Transform>();
 
     public static bool change;
     void Start()
@@ -26,6 +29,16 @@ public class SystemUser : MonoBehaviour
         {
             print(PhotonNetwork.LocalPlayer.NickName);
             Menu_Manager.Menu_Type = NetworkManager.Instance.SeachSelecao(PhotonNetwork.LocalPlayer.NickName);
+        }
+        if (Menu_Manager.Menu_Type)
+        {
+            transform.SetParent(respawnsParticipante[0].transform);
+            Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
+        }
+        else
+        {
+            transform.SetParent(respawnsBancada[0].transform);
+            Respawns.Add(PhotonNetwork.LocalPlayer.NickName, transform);
         }
 
     }
