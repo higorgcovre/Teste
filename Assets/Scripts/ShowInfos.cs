@@ -49,6 +49,7 @@ public class ShowInfos : MonoBehaviour
     {
         print("Mostrando Video para geral");
         FindObjectOfType<PlayerVideo>().IniciarVideo(url);
+        FindObjectOfType<Menu_Bancada>().ShowCameraTela();
     }
 
     [PunRPC]

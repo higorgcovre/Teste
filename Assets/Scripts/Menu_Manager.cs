@@ -6,12 +6,21 @@ public class Menu_Manager : MonoBehaviour
 {
     public GameObject bancada, participant;
 
+    public GameObject CameraLook;
+    public List<GameObject> respawnsBancada, respawnsParticipante;
+    public Dictionary<string, Transform> Respawns = new Dictionary<string, Transform>();
+
     public static bool Menu_Type;
     public void ShowCanvas()
     {
-        if (Menu_Type)
-            participant.SetActive(true);
-        else bancada.SetActive(true);
+        if (participant.activeSelf || bancada.activeSelf)
+            HideCanvas();
+        else
+        {
+            if (Menu_Type)
+                participant.SetActive(true);
+            else bancada.SetActive(true);
+        }
     }
 
     public void HideCanvas()

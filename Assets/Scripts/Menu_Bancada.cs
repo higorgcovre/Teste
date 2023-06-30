@@ -18,6 +18,7 @@ public class Menu_Bancada : MonoBehaviour
     //Request, Vote, Presentation;
     //public GameObject R_Contact, R_Request;
     public GameObject Menu_Presentation, Notif;
+    public GameObject Camera;
 
     [Header("Participantes")]
     public GameObject contentParticipantVoice;
@@ -34,7 +35,7 @@ public class Menu_Bancada : MonoBehaviour
 
     [Header("Vote")]
     public TextMeshProUGUI VoteTitle;
-    public TextMeshProUGUI VoteDesc;
+    public TextMeshProUGUI VoteDesc, VoteTelao;
     public TextMeshProUGUI voteT, voteD;
 
     [Header("Presention")]
@@ -148,11 +149,18 @@ public class Menu_Bancada : MonoBehaviour
         Menu_Presentation.SetActive(false);
         EnablePages(2, Pages_Presentation);
 
+        print("Enviando Vídeo");
         if (!participant)
             FindObjectOfType<ShowInfos>().SendVideo(videoUrl);
         else url = videoUrl;
         //FindObjectOfType<PlayerVideo>().IniciarVideo(videoUrl);
     }
+
+    public void ShowCameraTela()
+    {
+        Transform posRespaw; //Receber o transforme 
+    }
+    
 
     public void OpenRequest()
     {
@@ -184,7 +192,6 @@ public class Menu_Bancada : MonoBehaviour
         propostas.RemoveAt(atual);
 
         ChangeRequest(0);
-
     }
 
     public void Mutar()
@@ -195,6 +202,7 @@ public class Menu_Bancada : MonoBehaviour
     {
         VoteTitle.text = name;
         VoteDesc.text = desc;
+        VoteTelao.text = desc;
     }
 
     public void SetPresention()

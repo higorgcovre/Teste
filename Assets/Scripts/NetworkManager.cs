@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Transform[] spawnsMasters;
     public string nomeOutroPlayer;
 
-    public Dictionary<string, bool> Selecao = new Dictionary<string, bool>();
+    public Dictionary<string, bool> Selecao = new Dictionary<string, bool>(); //False é Bancada; True é Participant
 
 
     public void Awake()
