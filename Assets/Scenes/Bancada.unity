@@ -494,10 +494,10 @@ MonoBehaviour:
   content_VideosRecents: {fileID: 82825656}
   videosRecentsPrefab: []
   presention: {fileID: 0}
-  VoteTitle: {fileID: 0}
-  VoteDesc: {fileID: 0}
-  voteT: {fileID: 0}
-  voteD: {fileID: 0}
+  VoteTitle: {fileID: 1848840881}
+  VoteDesc: {fileID: 473316165}
+  voteT: {fileID: 1717711751}
+  voteD: {fileID: 872920484}
   propostas: []
   propostasSend: []
   description: {fileID: 900077105}
