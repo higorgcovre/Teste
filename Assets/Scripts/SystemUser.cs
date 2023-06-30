@@ -38,6 +38,7 @@ public class SystemUser : MonoBehaviour
                     transform.position = FindObjectOfType<Menu_Manager>().respawnsBancada[PhotonNetwork.CountOfPlayers - 1].transform.position;
                     print(transform.position);
                 }
+                FindObjectOfType<Menu_Manager>().Camera(transform.Find("POV"));
             }
         }
         else ChangeName();

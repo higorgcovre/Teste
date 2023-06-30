@@ -6,7 +6,7 @@ public class Menu_Manager : MonoBehaviour
 {
     public GameObject bancada, participant;
 
-    public GameObject CameraLook;
+    public GameObject CameraLook, CameraPOV;
     public List<GameObject> respawnsBancada, respawnsParticipante;
     public Dictionary<string, Transform> Respawns = new Dictionary<string, Transform>();
 
@@ -23,6 +23,11 @@ public class Menu_Manager : MonoBehaviour
         }
     }
 
+
+    public void Camera(Transform transform)
+    {
+        CameraPOV.transform.position = transform.position;
+    }
     public void HideCanvas()
     {
         participant.SetActive(false);
