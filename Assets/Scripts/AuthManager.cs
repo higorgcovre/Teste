@@ -91,11 +91,11 @@ public class AuthManager : MonoBehaviour
 
     void MudarTela(GameObject tela)
     {
-        tela.SetActive(true);
         print(atualTela);
         if (atualTela != null)
             atualTela.SetActive(false);
         atualTela = tela;
+        tela.SetActive(true);
     }
 
     public void ChangePassButton()
@@ -204,7 +204,8 @@ public class AuthManager : MonoBehaviour
                     else
                     {
                         //UIManager.instance.LoginScreen();
-                        warningRegisterText.text = "";
+                        warningRegisterText.text = "Email foi enviado com sucesso!";
+                        TelaLogin();
                     }
                     var sendEmailTask = User.SendEmailVerificationAsync().ContinueWith(task =>
                     {
@@ -218,6 +219,8 @@ public class AuthManager : MonoBehaviour
                             print("Ocorreu um erro no envio do email de verificação: " + task.Exception.ToString());
                             return;
                         }
+                        warningRegisterText.text = "Email foi enviado com sucesso!";
+                        TelaLogin();
                         print("Email foi enviado com sucesso!");
                     });
                 }
